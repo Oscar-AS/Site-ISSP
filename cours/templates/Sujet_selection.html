@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="{% static 'img/mdb-favicon.ico' %}" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.dark.min.css' %}" />
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.rtl.min.css' %}" />
+
+     <!-- MDB -->
+     <link rel="stylesheet" href="{% static 'css/mdb.rtl.min.css.map' %}" />
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css.map' %}" />
+
+
+  </head>
+
+  
+
+
+  <body>
+    <!-- Start your project here-->
+   
+            
+
+<h1><center> Sujet pour selection </h1></center> 
+ 
+<!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
+
+<!--Pour Revenir à la page des sujets -->
+<p><a href=" {% url 'index_sujet' %} "   class= "btn btn-primary">Retour </a></p>
+
+<!-- Cette boucle nous affiche la liste de tous les cours publiés avec les détails de chacun -->
+
+ {% for sujet in  liste_sujet_sel %}
+
+ <div class=" card col-3 "> 
+
+ </div>
+<div class= "card">
+
+    <!-- Cardcontent -->
+    <div class= "card-body"> 
+
+         <!-- Pour afficher l'année'-->
+        <h2 class="card-title">Epreuve de l'an  {{sujet.Année}} </h2>
+       
+                    
+       <!-- Pour afficher la date de publication -->
+        <p class= "card-text"> Ce document a été publié il y a {{sujet.Date_creation|timesince }}, par {{sujet.Auteur }} , étudiant en {{sujet.Classe_auteur}} </p>
+       
+        <!-- Pour afficher le nombre de consulations-->
+        <p class= "card-text"> Ce document à été consulter {{sujet.Consultation}} fois </p>
+
+        <!--Pour télecharger le cours-->
+        <p><a href=" {{sujet.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+
+        <img src="{{Evenement.Support.url}}">
+        
+     <hr>
+    </div>
+</div>
+
+ {% endfor %}
+
+
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- End your project here-->
+
+  
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

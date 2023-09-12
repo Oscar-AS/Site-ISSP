@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<head> 
+
+</head>
+
+<body> 
+
+
+   <!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Retour </a></p>
+
+
+<!-- Cette boucle nous affiche la liste de tous les événements publiés avec les détails de chacun -->
+
+{% for Evenement in liste_evenement %}
+
+<div class=" card col-3 "> 
+
+</div>
+<div class= "card">
+
+   <!-- Cardcontent -->
+   <div class= "card-body"> 
+
+           
+       <!-- Pour afficher la description de l'évènement-->
+       <p> <em class= "card-text"> {{Evenement.Description}} </em></p>
+
+       <!-- Pour afficher l'évènement-->
+       <img src="{{Evenement.Support.url}}">
+
+      <!-- Pour afficher la date de publication -->
+       <p class= "card-text"> Ce média a été publié il y a {{Evenement.Date_creation|timesince }}, par {{Evenement.Auteur }} , étudiant en {{Evenement.Classe_auteur}} </p>
+      
+      <!-- Pour afficher la date de la dernière mise à jours -->
+       <p class= "card-text"> Mis à jour il y a {{Evenement.Date_actualisation|timesince}} </p>
+      
+       <!-- Pour afficher la date de la dernière mise à jours -->
+       <p class= "card-text"> Ce média à été consulter {{Evenement.Consultation}} fois </p>
+
+       <!--Pour télecharger le cours-->
+      <!-- <p><a href=" {{Evenement.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p> -->
+
+
+      
+      
+
+       
+    <hr>
+   </div>
+</div>
+
+{% endfor %}
+
+
+
+
+       </div>
+     </div>
+   </div>
+
+   <!-- End your project here-->
+
+
+</body>

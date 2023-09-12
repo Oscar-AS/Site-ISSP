@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+   <form method="post" action="{% url 'Cours_recherche_L1' %}">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit"> Faire une recherche</button>
+       
+       <!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
+
+   </form>

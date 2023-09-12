@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+  <head>
+
+</head>
+
+<body>
+  
+  <h1><center> Bienvenue dans notre site de cours en ligne. </h1></center> 
+ 
+  <br> </br>
+  
+  
+    
+  
+   <!--Pour ouvrir le site des cours exo et corrections  de L1-->
+   <p><a href=" {% url 'index_cours_L1' %} "   class= "btn btn-primary">Première année LPAS </a></p>
+
+   <!--Pour ouvrir le site des cours exo et corrections  de L2-->
+   <p><a href=" {% url 'index_cours_L2' %} "   class= "btn btn-primary">Deuxième année LPAS </a></p>
+
+   <!--Pour ouvrir le site des cours exo et corrections  de L3-->
+   <p><a href=" {% url 'index_cours_L3' %} "   class= "btn btn-primary">Troisième année LPAS </a></p>
+
+
+
+
+<!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
+
+
+
+   <h3> <center> Cette partie est résever uniquement aux publicateurs. Pour y accéder cliquer sur le lien. </center></h3>
+
+
+   <!-- Ce lien permet aux publicateur d'acceder au backend du site et d'y poster leur publication-->
+   <!--Username: pub , Code : pub123456-->
+  
+  
+   <h4><center><a href=" http://127.0.0.1:8000/admin/" target="_blank" > Publier </center></a></h4>
+
+
+
+</body>

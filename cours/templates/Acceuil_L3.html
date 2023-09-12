@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="{% static 'img/mdb-favicon.ico' %}" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.dark.min.css' %}" />
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.rtl.min.css' %}" />
+
+     <!-- MDB -->
+     <link rel="stylesheet" href="{% static 'css/mdb.rtl.min.css.map' %}" />
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css.map' %}" />
+
+
+  </head>
+
+  
+
+
+  <body>
+    <!-- Start your project here-->
+   
+            
+
+<h1><center> Bienvenue dans notre site de cours en ligne. </h1></center> 
+ 
+<br> </br>
+
+<p>
+ <strong>
+     Dans ce site, nous vous offrons la possiblité d'avoir tous les cours que vous avez ratés ou incompris, afin que vous puissiez vous mettre à jours.
+    <br> Vous pourez télecharger les cours de votre choix gratuitement.</br>
+ </strong> 
+</p>
+
+<!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
+
+<!--Pour Revenir à la page des cours -->
+<p><a href=" {% url 'index_cours' %} "   class= "btn btn-primary">Retour </a></p>
+
+<!-- Cette boucle nous affiche la liste de tous les cours publiés avec les détails de chacun -->
+
+ {% for cours in  liste_cours3 %}
+
+ <div class=" card col-3 "> 
+
+ </div>
+<div class= "card">
+
+    <!-- Cardcontent -->
+    <div class= "card-body"> 
+
+         <!-- Pour afficher le titre du cours-->
+        <h2 class="card-title"> {{cours.Titre}} </h2>
+       
+        <!-- Pour afficher la description du cours-->
+        <p> <em class= "card-text"> {{cours.Description}} </em></p>
+       
+       <!-- Pour afficher la date de publication -->
+        <p class= "card-text"> Ce document a été publié il y a {{cours.Date_creation|timesince }}, par {{cours.Auteur }} , étudiant en {{cours.Classe_auteur}} </p>
+       
+       <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Mis à jour il y a{{cours.Date_actualisation|timesince}} </p>
+       
+        <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Ce document à été consulter {{cours.Consultation}} fois </p>
+
+        <!--Pour télecharger le cours-->
+        <p><a href=" {{cours.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+
+       
+        
+     <hr>
+    </div>
+</div>
+
+ {% endfor %}
+
+
+
+    <!-- End your project here-->
+
+  
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
