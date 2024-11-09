@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+   <form method="post" action="{% url 'formulaire_message' %}">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit">Envoyer</button>
+       
+       <!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
+
+   </form>

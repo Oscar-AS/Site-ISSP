@@ -1,0 +1,26 @@
+/* custom.css */
+body {
+    background-color: antiquewhite; /* Light background color */
+  }
+  
+  .card {
+    border: none; /* Remove card border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .card-header {
+    background-color: #c9a38ab0; /* Bootstrap primary color */
+    color: white;
+    border-bottom: none; /* Remove bottom border */
+  }
+  
+  .card-header h4 {
+    margin: 0;
+  }
+  
+  .btn-primary {
+    background-color: #575a4e;
+    border: none; /* Remove button border */
+  }
+  

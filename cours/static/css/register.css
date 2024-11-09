@@ -1,0 +1,80 @@
+/* custom.css */
+
+/* Style de base pour le corps de la page */
+body {
+    background-color: antiquewhite; /* Couleur de fond clair */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style pour la carte contenant le formulaire */
+  .card {
+    border: none; /* Suppression de la bordure de la carte */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  }
+  
+  /* Style pour l'en-tête de la carte */
+  .card-header {
+    background-color: #007bff; /* Couleur principale de Bootstrap */
+    color: white;
+    border-bottom: none; /* Suppression de la bordure inférieure */
+  }
+  
+  .card-header h4 {
+    margin: 0;
+  }
+  
+  /* Style pour les champs du formulaire */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da; /* Bordure grise */
+  }
+  
+  /* Style pour le bouton de soumission */
+  .btn-primary {
+    background-color: #007bff;
+    border: none; /* Suppression de la bordure du bouton */
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  /* Style pour les messages d'erreur du mot de passe */
+  .helptext {
+    color: #dc3545; /* Couleur rouge pour les erreurs */
+    font-size: 14px;
+    margin-top: 10px;
+    display: none; /* Cacher par défaut */
+  }
+  
+  /* Ajustements de style pour les éléments de formulaire */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3; /* Couleur légèrement plus foncée au survol */
+  }
+  

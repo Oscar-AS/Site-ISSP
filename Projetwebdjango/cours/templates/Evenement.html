@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% load static %}
+<head> 
+
+   <!-- Appel du fichier css-->
+   <link rel="stylesheet"  href="{% static 'css/evenement.css' %}">
+
+     <!-- MDB -->
+     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+
+     <!-- MDB -->
+     <link rel="stylesheet" href="{% static 'css/mdb.dark.min.css' %}" />
+ 
+     <!-- MDB -->
+     <link rel="stylesheet" href="{% static 'css/mdb.rtl.min.css' %}" />
+ 
+      <!-- MDB -->
+      <link rel="stylesheet" href="{% static 'css/mdb.rtl.min.css.map' %}" />
+ 
+     <!-- MDB -->
+     <link rel="stylesheet" href="{% static 'css/mdb.min.css.map' %}" />
+ 
+ 
+
+</head>
+
+<body> 
+
+
+   <!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Retour </a></p>
+
+
+
+
+
+
+<div class= "containeur">
+
+   <div class="containeur-onglets">
+     <div class="onglets active" data-id="1"> Photos </div>
+     <div class="onglets " data-id="2"> videos </div>
+   </div>
+
+
+
+
+
+<!--               Contenu pour photos                 -->
+
+
+   <div class="contenue activeContenue" data-id ="1">
+     
+    <!-- Cette boucle nous affiche la liste de tous les événements photos publiés avec les détails de chacun -->
+
+      {% for Evenement in liste_photos %}
+                 
+         <!-- Pour afficher la description de l'évènement-->
+         <p> <em class= "card-text"> {{Evenement.Description}} </em></p>
+      
+         <!-- Pour afficher l'évènement-->
+         <img src="{{Evenement.Support.url}}">
+            
+      
+         <!-- Pour afficher la date de publication -->
+         <p class= "card-text"> Publié il y a {{Evenement.Date_creation|timesince }}, par {{Evenement.Auteur }} , étudiant en {{Evenement.Classe_auteur}} </p>
+            
+         <!-- Pour afficher la date de la dernière mise à jours -->
+         <p class= "card-text"> Mis à jour il y a {{Evenement.Date_actualisation|timesince}} </p>
+            
+         <!-- Pour afficher la date de la dernière mise à jours -->
+         <p class= "card-text"> Ce média à été consulter {{Evenement.Consultation}} fois </p>
+      
+         <!--Pour télecharger le cours-->
+         <!-- <p><a href=" {{Evenement.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p> -->
+
+         <hr>
+
+      {% endfor %}
+             
+        
+        
+   </div>
+      
+      
+      
+   
+<!--               Contenu pour vidéo               -->
+
+
+
+<div class="contenue" data-id ="2">
+
+      <!-- Cette boucle nous affiche la liste de tous les événements vidéos publiés avec les détails de chacun -->
+
+      {% for Evenement in liste_videos %}
+                     
+      <!-- Pour afficher la description de l'évènement-->
+      <p> <em class= "card-text"> {{Evenement.Description}} </em></p>
+
+      <!-- Pour afficher l'évènement-->
+      <video src="{{Evenement.Support.url}}" controls preload="metadata" ></video>
+         
+
+      <!-- Pour afficher la date de publication -->
+      <p class= "card-text"> Publié il y a {{Evenement.Date_creation|timesince }}, par {{Evenement.Auteur }} , étudiant en {{Evenement.Classe_auteur}} </p>
+         
+      <!-- Pour afficher la date de la dernière mise à jours -->
+      <p class= "card-text"> Mis à jour il y a {{Evenement.Date_actualisation|timesince}} </p>
+         
+      <!-- Pour afficher la date de la dernière mise à jours -->
+      <p class= "card-text"> Ce média à été consulter {{Evenement.Consultation}} fois </p>
+
+      <!--Pour télecharger le cours-->
+      <!-- <p><a href=" {{Evenement.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p> -->
+
+      <hr>
+
+      {% endfor %}
+      
+     
+
+   <!-- End your project here-->
+
+
+
+
+
+
+<!-- Appel du fichier javas script--> 
+<script src="{% static 'js/evenement.js' %}"></script>
+   
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

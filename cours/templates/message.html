@@ -1,11 +1,56 @@
 <!DOCTYPE html>
+{% load static%}
+  <html lang="fr">
 
-   <form method="post" action="{% url 'formulaire_message' %}">
-       {% csrf_token %}
-       {{ form.as_p }}
-       <button type="submit">Envoyer</button>
-       
-       <!--Pour Revenir à la page acceuil -->
-<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
 
-   </form>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device_width, initial-scale=1.0"> 
+<link rel="stylesheet"  href="{% static 'css/message.css' %}"> 
+
+</head>
+
+
+<body>
+
+<form action="" method="POST"> 
+  
+  {% csrf_token %}
+  
+  <h5>Une question? Une suggestion? </h5>
+  <h2> Nous contacter</h2>
+
+  <label>Nom</label>
+  <input type="text" placeholder="Entrer votre nom" name="nom" required>
+
+  <label>Prénom</label>
+  <input type="text" placeholder="Entrer votre prénom" name="prenom" required>
+
+  <label>Numéro</label>
+  <input type="number" placeholder="Entrer votre numéro de téléphone" name="phone" required>
+
+  <label>Email</label>
+  <input type="email" placeholder="Entrer votre email" name="email" required>
+
+  <label>Message</label>
+  <textarea name="message" placeholder="Saisissez votre message" cols="30" rows="10" required></textarea>
+  
+  <button name="send">Envoyé</button>
+
+  
+</form>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+</html>

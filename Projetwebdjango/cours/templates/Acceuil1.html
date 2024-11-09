@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+ <!-- Appel du fichier css-->
+ <link rel="stylesheet"  href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body>
+  
+    <h1><center> Bienvenue <span class="auto-typing"></span></h1></center> 
+ 
+    <br> </br>
+  
+    <p>
+      <strong>
+          Dans ce site, nous vous offrons la possiblité d'avoir tous les cours que vous avez ratés ou incompris, afin que vous puissiez vous mettre à jours. Egalement vous pourez obtenir des exercices sur tous les cours pour vous exercé. Vous aurez aussi des corrections de ses exercices.
+          <br> Vous pourez télecharger les cours,les exercices,les corrections de votre choix gratuitement.</br>
+          <br>En plus, vous pourez consulter les images et vidéoes des événements qui se sont dérouler à l'ISSP et que vous n'avez pas pu participer.</br>
+      </strong> 
+    </p>
+    
+  
+    <!--Pour ouvrir le site des cours exo et corrections -->
+    <p><a href=" {% url 'index_cours' %} "   class= "btn btn-primary">Cours </a></p>
+
+    <!--Pour ouvrir le site des evenements -->
+    <p><a href=" {% url 'index_evenement' %} "   class= "btn btn-primary">Evenements </a></p>
+
+
+    <!--Pour ouvrir le site de sujet pour préparation au test -->
+    <p><a href=" {% url 'index_sujet' %} "   class= "btn btn-primary">Sujet des test </a></p>
+
+
+
+    <!--Pour ouvrir le site de tout savoir sur la filière -->
+    <p><a href=" {% url 'index_information' %} "   class= "btn btn-primary">Informations </a></p>
+
+   
+    
+
+    <footer> 
+
+      <nav> 
+        <!--Pour Revenir à la page acceuil -->
+        <p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
+
+        <!--Pour faire des commentaires -->
+        <p><a href=" {% url 'formulaire_message' %} "   class= "btn btn-primary">Message </a></p>
+    
+        <!--Pour envoyer un mail  -->
+        <p><a href="mailto:projetsiteweblpas@gmail.com">Nous envoyez un mail </a></p>
+
+      </nav>
+
+      
+
+      <h3> <center> Cette partie est résever uniquement aux publicateurs. </center></h3>
+
+
+      <!-- Ce lien permet aux publicateur d'acceder au backend du site et d'y poster leur publication-->
+      <!--Username: pub , Code : pub123456-->
+  
+  
+      <h4><center><a href=" http://127.0.0.1:8000/admin/" target="_blank" > Publier </center></a></h4>
+
+
+   
+
+      <h3> <center> Cette partie est résever uniquement aux administrateurs. Pour y accéder cliquer sur le lien. </center></h3>
+
+
+      <!-- Ce lien permet aux administrateur d'acceder au backend du site et d'y apporter de modification si necessaire-->
+
+
+      <h4><center><a href=" http://127.0.0.1:8000/admin/" target="_blank" > Espace administateur </center></a></h4>
+
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+      <script src="{% static 'js/Typed.js' %}"></script>
+      <script> 
+        let typed = new Typed('.auto-typing' , {
+          Strings: ['front-end', 'maison', 'mur'],
+          typeSpeed: 100,
+          backSpeed: 100,
+          loop: true,
+          fadeOut:true,
+          fadeOutClass:'typed-fade-out',
+          fadeOutDelay: 500
+        })
+      </script>
+</body>

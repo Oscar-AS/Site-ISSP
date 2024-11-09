@@ -1,0 +1,194 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background: #f1f1f1;
+    height: auto;  
+}
+
+
+header {
+    max-width:100%;
+    background-color: rgb(120, 120, 186);
+
+}
+
+header h2 {
+    padding: 0% 10px;
+}
+
+
+
+header a{
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenant {
+    padding: 0% 10px;
+    text-transform: uppercase;
+    font-weight: #eae6eaf6;
+
+}
+
+body main{
+    background-color: rgb(74, 86, 94);
+    width: auto;
+    height: fit-content;
+    height: 700px;
+}
+
+
+.contenant-onglets {
+    padding: 0% 10px;
+    display: flex;
+    flex-direction:row;
+    
+   
+}
+
+.onglets {
+    left: 5%;
+    padding: 0% 10px;
+    font-weight: 700;
+    cursor: pointer;
+    
+}
+
+.onglets :hover {
+    color: hsla(264, 26%, 96%, 0.888);
+}
+
+.contenu1 {
+    left: 20%;
+    top: 15%;
+    padding: 5px 10px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+
+}
+
+.contenu1 h2{
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.contenu1 hr {
+    padding-bottom: 10px;
+}
+
+.active1 {
+    
+    color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+
+.active {
+  
+    color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+
+
+
+.activeContenu1 {
+    animation: fade 0.5s forwards;
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+.conteneur {
+    padding: 10px 0px;
+    top: 30%;
+    left: 0%;
+    display: block;
+    max-width: 80%;
+    
+
+}
+
+
+.conteneur-onglet {
+    width: 10%;
+    font-size: larger;
+    height: 10%;
+    display: flex;
+    flex-direction:column; 
+}
+
+.onglet {
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+.contenu2 {
+    top: 60%;
+    right: 25%;
+    left: 25%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    
+}
+
+
+
+.activeContenu2 {
+    animation: fade 0.5s forwards;
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+*******************************************************************************
+
+footer section .a1  {
+    padding: 30px 10px ;
+    display: flex;
+    flex-direction: column;
+}
+
+footer section .a  {
+    padding: 30px 10px ;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+footer section{
+    padding: 30px 10px ;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(16, 16, 16);
+    height: 100px;
+}

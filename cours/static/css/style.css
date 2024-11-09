@@ -1,0 +1,73 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background: #f1f1f1;
+    height: 100vh;  
+}
+
+.container {
+    top: 20%;
+    left: 25%;
+    right: 25%;
+    display: inline;
+    padding-inline: 10%;
+
+}
+
+
+.container-onglet {
+    background: #ada6a6;
+    width: 100%;
+    font-size: larger;
+    height: 10%;
+    display: flex;
+    flex-direction:row;
+    
+   
+}
+
+.onglet {
+    top: 20%;
+    left: 5%;
+    right: 5%;
+    padding-inline: 10%;
+    justify-content:  space-between;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.onglet:not(:nth-child(3)) {
+    border-right: 1px solid #0c0c0c;
+}
+
+.contenu {
+    opacity: 0;
+}
+
+
+.activ {
+    background:midnightblue;
+    color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+
+.activContenu {
+    animation: fade 0.5s forwards;
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+{% load static %}
+  <head>
+
+    <!-- Appel du fichier css-->
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}">
+    
+    
+
+  </head>
+
+<body>
+  
+  <h1><center> Vous trouverez ici tous les cours en pdf de toutes les classes. </h1></center> 
+ 
+  <br> </br>
+  
+  <hr/> 
+
+  <form action="{% url 'Cours_recherche_L1' %}" method="get">
+    <input type="text" name="mot" placeholder="rechercher ...">
+    <input type="submit" value="rechercher">
+  </form>
+
+
+  <hr/>
+    
+  
+   <!--Pour ouvrir le site des cours exo et corrections  de L1-->
+   <p><a href=" {% url 'index_cours_L1' %} "   class= "btn btn-primary">Première année LPAS </a></p>
+
+   <!--Pour ouvrir le site des cours exo et corrections  de L2-->
+   <p><a href=" {% url 'index_cours_L2' %} "   class= "btn btn-primary">Deuxième année LPAS </a></p>
+
+   <!--Pour ouvrir le site des cours exo et corrections  de L3-->
+   <p><a href=" {% url 'index_cours_L3' %} "   class= "btn btn-primary">Troisième année LPAS </a></p>
+
+
+
+  <div class= "container">
+
+    <div class="container-onglets">
+      <div class="onglets active" data-anim="1"> Première année LPAS </div>
+      <div class="onglets " data-anim="2"> Deuxième année LPAS </div>
+      <div class="onglets " data-anim="3"> Troisième année LPAS </div>
+    </div>
+
+
+<!--               Contenu pour cour L1                  -->
+
+
+    <div class="contenu activeContenu" data-anim ="1">
+      
+      
+      {% for cours in  liste_cours1 %}
+
+     <!-- Cardcontent -->
+      <div class= "body"> 
+
+         <!-- Pour afficher le titre du cours-->
+        <h2 class="card-title"> {{cours.Titre}} </h2>
+       
+        <!-- Pour afficher la description du cours-->
+        <p> <em class= "card-text"> {{cours.Description}} </em></p>
+       
+       <!-- Pour afficher la date de publication -->
+        <p class= "card-text"> Ce document a été publié il y a {{cours.Date_creation|timesince }}, par {{cours.Auteur }} , étudiant en {{cours.Classe_auteur}} </p>
+       
+       <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Mis à jour il y a{{cours.Date_actualisation|timesince}} </p>
+       
+        <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Ce document à été consulter {{cours.Consultation}} fois </p>
+
+        <!--Pour télecharger le cours-->
+        <p><a href=" {{cours.Support}} " download="">Télécharger </a></p>
+
+       
+     <hr>
+      </div>
+
+      {% endfor %}
+    </div>
+  
+
+       
+    
+<!--               Contenu pour cour L2                -->
+
+
+    <div class="contenu" data-anim ="2">
+      
+      
+      <!-- Cette boucle nous affiche la liste de tous les cours publiés avec les détails de chacun -->
+
+ {% for cours in  liste_cours2 %}
+
+<div class= "card">
+
+    <!-- Cardcontent -->
+    <div class= "card-body"> 
+
+         <!-- Pour afficher le titre du cours-->
+        <h2 class="card-title"> {{cours.Titre}} </h2>
+       
+        <!-- Pour afficher la description du cours-->
+        <p> <em class= "card-text"> {{cours.Description}} </em></p>
+       
+       <!-- Pour afficher la date de publication -->
+        <p class= "card-text"> Ce document a été publié il y a {{cours.Date_creation|timesince }}, par {{cours.Auteur }} , étudiant en {{cours.Classe_auteur}} </p>
+       
+       <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Mis à jour il y a{{cours.Date_actualisation|timesince}} </p>
+       
+        <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Ce document à été consulter {{cours.Consultation}} fois </p>
+
+        <!--Pour télecharger le cours-->
+        <p><a href=" {{cours.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+
+       
+        
+     <hr>
+    </div>
+    {% endfor %}
+</div>
+</div>
+ 
+
+<!--               Contenu pour cour L3                  -->
+
+
+    <div class="contenu" data-anim ="3">
+      
+     <!-- Cette boucle nous affiche la liste de tous les cours publiés avec les détails de chacun -->
+
+  {% for cours in  liste_cours3 %}
+
+<div class= "card">
+
+    <!-- Cardcontent -->
+    <div class= "card-body"> 
+
+         <!-- Pour afficher le titre du cours-->
+        <h2 class="card-title"> {{cours.Titre}} </h2>
+       
+        <!-- Pour afficher la description du cours-->
+        <p> <em class= "card-text"> {{cours.Description}} </em></p>
+       
+       <!-- Pour afficher la date de publication -->
+        <p class= "card-text"> Ce document a été publié il y a {{cours.Date_creation|timesince }}, par {{cours.Auteur }} , étudiant en {{cours.Classe_auteur}} </p>
+       
+       <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Mis à jour il y a{{cours.Date_actualisation|timesince}} </p>
+       
+        <!-- Pour afficher la date de la dernière mise à jours -->
+        <p class= "card-text"> Ce document à été consulter {{cours.Consultation}} fois </p>
+
+        <!--Pour télecharger le cours-->
+        <p><a href=" {{cours.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+
+       
+        
+     <hr>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+
+
+
+<!-- Appel du fichier javas script--> 
+<script src="{% static 'js/cours.js' %}"></script>
+    
+
+
+
+
+<!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} " >Page d'acceuil </a></p>
+
+
+
+
+
+
+
+
+
+
+   
+   <!-- Ce lien permet aux publicateur d'acceder au backend du site et d'y poster leur publication-->
+   <!--Username: pub , Code : pub123456-->
+  
+
+</body>

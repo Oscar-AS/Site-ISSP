@@ -1,0 +1,18 @@
+    -webkit-text-size-adjust: none;
+    font-family: Open Sans,Open Sans fallback,Helvetica,Arial,Sans-Serif;
+    color: #455f7c;
+    line-height: 1.6;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    min-height: 121px;
+    background-color: #001327;

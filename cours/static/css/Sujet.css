@@ -1,0 +1,59 @@
+
+.tab-pane {
+    display: none;
+}
+.active {
+    display: block;
+}
+
+/* Styles spécifiques pour tablettes et ordinateurs */
+@media (min-width: 768px) {
+    /* Navbar */
+    .navbar {
+        padding: 1rem 2rem;
+    }
+    .navbar .widgettitle img {
+        height: 30px;
+    }
+}
+
+/* Styles spécifiques pour les appareils mobiles */
+@media (max-width: 767px) {
+    /* Navbar */
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    .navbar .widgettitle img {
+        height: 25px;
+    }
+    .dropdown-menu {
+        min-width: 100%;
+    }
+    .navbar-toggler {
+        padding: 0.25rem 0.75rem;
+    }
+    /* Contenu des onglets */
+    .nav-tabs {
+        flex-direction: column;
+    }
+    .nav-tabs .nav-item {
+        margin-bottom: 0.5rem;
+    }
+    .nav-tabs .nav-link {
+        padding: 0.5rem 1rem;
+    }
+    .tab-pane .sub-tab-pane .card {
+        width: 100%;
+    }
+    /* Footer */
+    .footer .col-6 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Styles spécifiques pour les écrans plus grands */
+@media (min-width: 992px) {
+    .footer .col-6 {
+        margin-bottom: 0;
+    }
+}

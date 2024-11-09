@@ -1,0 +1,64 @@
+
+.containeur {
+    top: 20%;
+    left: 25%;
+    right: 25%;
+    bottom: 90%;
+    display: inline;
+    padding-inline: 50%;
+
+}
+
+
+.containeur-onglets {
+    background: #f1f1f1;
+    font-size: larger;
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.onglets {
+    top: 20%;
+    left: 25%;
+    right: 25%;
+    padding-inline: 20%;
+    justify-content:  space-between;
+    align-items: center;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.onglets:not(:nth-child(2)) {
+    border-right: 1px solid #333;
+}
+
+.contenue {
+    top: 30%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 5%;
+    opacity: 0;
+}
+
+
+
+.active {
+    background:midnightblue;
+    color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+
+.activeContenue {
+    animation: passage 0.5s forwards;
+}
+@keyframes passage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

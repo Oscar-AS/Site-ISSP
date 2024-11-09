@@ -1,0 +1,45 @@
+/* site.css */
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #333;
+  color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+footer {
+  background-color: #333;
+  padding: 40px;
+}
+
+footer .list-unstyled li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.statistics .text-blanchedalmond {
+  color: blanchedalmond;
+}
+
+.card img {
+  object-fit: cover;
+}

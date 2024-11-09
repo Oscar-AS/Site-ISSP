@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Cours</title>
+    <link rel="stylesheet" href="{% static 'css/form_style.css' %}"> <!-- Lien vers ton fichier CSS -->
+</head>
+<body>
+    <h1>Faire une publication</h1>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <!-- Conteneur pour les boutons -->
+    <div class="button-container">
+        <a href="{% url 'index' %}" class="button">Accueil</a>
+        <a href="javascript:history.back()" class="button">Retour</a>
+    </div>
+    
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label_tag }}
+                    {% if field.field.required %}
+                        <span class="required">*</span>
+                    {% endif %}
+                </label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <center><button type="submit" class="submit-button">Ajouter</button></center>
+    </form>
+</body>
+</html>

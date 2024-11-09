@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+   
+  </head>
+
+  
+
+
+  <body>
+ 
+
+    <form action="{% url 'demande_publicateur' %}" method="POST"> 
+  
+      {% csrf_token %}
+      {{form.as_p}}
+      <button type="submit">send</button>
+      
+    </form>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

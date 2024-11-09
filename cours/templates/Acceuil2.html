@@ -1,44 +1,389 @@
 <!DOCTYPE html>
-
-  <head>
-
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onglets de Cours</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" >
 </head>
+ <body>
+  
+  <header>
 
-<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-dark">
+      <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            MENU
+          </a>
+        
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'index_cours' %}">Cours</a>
+            <a class="dropdown-item" href="{% url 'index_evenement' %}">Evenements</a>
+            <a class="dropdown-item" href="{% url 'index_sujet' %}">Sujet des test </a>
+            <a class="dropdown-item" href="{% url 'index_information' %}">Informations</a>
+          </div>
+        </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="{% url 'index' %}">Acceuil <span class="sr-only">(current)</span></a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link text-white " href="{% url 'formulaire_message' %}" >Contactez-nous</a>
+          </li>
+        </ul>
+      </div>
+      <form method="GET" action="{% url 'index_cours' %}">
+        {% csrf_token %}
+        <form id="searchForm" method="GET" action="{% url 'index_cours' %}" onsubmit="return handleSearchSubmit()">
+          {% csrf_token %}
+          
+          <div class="input-group">
+              <input type="search" placeholder="Rechercher par titre" id="searchInput" name="item_nom" class="form-control mr-sm-2">
+              <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Rechercher</button>
+                  <a href="{% url 'index_cours' %}" class="btn btn-outline-success my-2 my-sm-0">Annuler</a>
+              </div>
+          </div>
+        </form>
+       
+      </form>    
+
+  </nav>
+</header>
+
+
+
+<div class="dropdown" style= "top: 10px; ">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Niveau licence
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#section1" onclick="showSection('section1')">Licence 1</a>
+    <a class="dropdown-item" href="#section2" onclick="showSection('section2')">Licence 2</a>
+    <a class="dropdown-item" href="#section3" onclick="showSection('section3')">Licence 3</a>
+  </div>
+</div>
+
+<div class="dropdown" style= "top: -30px; left: 180px;">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Niveau master
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#section4" onclick="showSection('section4')">Master 1</a>
+    <a class="dropdown-item" href="#section5" onclick="showSection('section5')">Master 2</a>
+    <a class="dropdown-item" href="#section6" onclick="showSection('section6')">Master 3</a>
+  </div>
+</div>
+
+<section id="section1" style="display: block;">
   
-  <h1><center> Bienvenue dans notre site de cours en ligne. </h1></center> 
- 
-  <br> </br>
-  
-  
+  <div class="row" style="width: 100%;">
+    {% for cours in cours_list %}
+        {% if cours.Niveau_concerné == "option1" %}
+           
+             <div class="card mt-3 mx-3" id="v-pills-tabContent" role="tabpanel" aria-labelledby="v-pills-L1-tab" aria-orientation="horizontal" style="width: 18rem; height: 20rem; ">
+               <div class="card-header">
+                 <h5 class="card-title">{{cours.Titre}}</h5>
+               </div>
+                 <div class="card-body">
+                 <p class="card-text">{{cours.Description}}</p>
+                 <br>
+                 <p class="card-text"><small>Publié il y a {{cours.Date_creation|timesince }} par {{cours.Auteur}}.</small></p>
+                 <!-- <p class="card-text" name="fichier">{{cours.Support}}</p> -->
+                 </div>
+               <div class="card-footer"> 
+                 
+                 <a href="{{cours.Support.url}} " download="{{ cours.Titre }}"  class= "btn btn-primary">Télécharger</a>
+                 <a onclick="openFile('{{cours.Support.url}}')"  class= "btn btn-primary">ouvrir</a> 
+              
+               </div>
+             </div>
+        
+        {% endif %}
+    {% endfor %}
+
+ </div>
+</section>
+
+<section id="section2" style="display:none;">
+  <div class="row" style="width: 100%;">
+    {% for cours in cours_list %}
+        {% if cours.Niveau_concerné == "option2" %}
+           
+             <div class="card mt-3 mx-3" id="v-pills-tabContent" role="tabpanel" aria-labelledby="v-pills-L2-tab" aria-orientation="horizontal" style="width: 18rem; height: 20rem; ">
+               <div class="card-header">
+                 <h5 class="card-title">{{cours.Titre}}</h5>
+               </div>
+                 <div class="card-body">
+                 <p class="card-text">{{cours.Description}}</p>
+                 <p class="card-text">Auteur : {{cours.Auteur}}</p>
+                 <p class="card-text"><small>Mis à jour il y a {{cours.Date_creation|timesince }}</small></p>
+                 </div>
+               <div class="card-footer"> 
+                 
+                <a href="{{cours.Support.url}} " download="{{ cours.Titre }}"  class= "btn btn-primary">Télécharger</a>
+                <a onclick="openFile('{{cours.Support.url}}')"  class= "btn btn-primary">ouvrir</a> 
+             
+               </div>
+             </div>
+        
+        {% endif %}
+     
+    {% endfor %}
+ </div>
+</section>
+
+<section id="section3" style="display:none;">
+  <div class="row" style="width: 100%;">
+    {% for cours in cours_list %}
+        {% if cours.Niveau_concerné == "option3" %}
+           
+             <div class="card mt-3 mx-3" id="v-pills-tabContent" role="tabpanel" aria-labelledby="v-pills-L3-tab" aria-orientation="horizontal" style="width: 18rem; height: 20rem; ">
+               <div class="card-header">
+                 <h5 class="card-title">{{cours.Titre}}</h5>
+               </div>
+                 <div class="card-body">
+                 <p class="card-text">{{cours.Description}}</p>
+                 <p class="card-text">Auteur : {{cours.Auteur}}</p>
+                 <p class="card-text"><small>Mis à jour il y a {{cours.Date_creation|timesince }}</small></p>
+                 </div>
+               <div class="card-footer"> 
+                 
+                <a href="{{cours.Support.url}} " download="{{ cours.Titre }}"  class= "btn btn-primary">Télécharger</a>
+                <a onclick="openFile('{{cours.Support.url}}')"  class= "btn btn-primary">ouvrir</a> 
+             
+               </div>
+             </div>
+        
+        {% endif %}
+     
+    {% endfor %}
+ </div>
+</section>
+
+<!--***********************************************************************************************************************************************-->
+<section id="section4" style="display:none;">
+  <div class="row" style="width: 100%;">
+    {% for cours in cours_list %}
+        {% if cours.Niveau_concerné == "option4" %}
+           
+             <div class="card mt-3 mx-3" id="v-pills-tabContent" role="tabpanel" aria-labelledby="v-pills-M1-tab" aria-orientation="horizontal" style="width: 18rem; height: 20rem; ">
+               <div class="card-header">
+                 <h5 class="card-title">{{cours.Titre}}</h5>
+               </div>
+                 <div class="card-body">
+                 <p class="card-text">{{cours.Description}}</p>
+                 <p class="card-text">Auteur : {{cours.Auteur}}</p>
+                 <p class="card-text"><small>Mis à jour il y a {{cours.Date_creation|timesince }}</small></p>
+                 </div>
+               <div class="card-footer"> 
+                 
+                <a href="{{cours.Support.url}} " download="{{ cours.Titre }}"  class= "btn btn-primary">Télécharger</a>
+                <a onclick="openFile('{{cours.Support.url}}')"  class= "btn btn-primary">ouvrir</a> 
+             
+               </div>
+             </div>
+        
+        {% endif %}
+     
+    {% endfor %}
+ </div>
+</section>
+
+<section id="section5" style="display:none;">
+  <div class="row" style="width: 100%;">
+    {% for cours in cours_list %}
+        {% if cours.Niveau_concerné == "option5" %}
+           
+             <div class="card mt-3 mx-3" id="v-pills-tabContent" role="tabpanel" aria-labelledby="v-pills-M2-tab" aria-orientation="horizontal" style="width: 18rem; height: 20rem; ">
+               <div class="card-header">
+                 <h5 class="card-title">{{cours.Titre}}</h5>
+               </div>
+                 <div class="card-body">
+                 <p class="card-text">{{cours.Description}}</p>
+                 <p class="card-text">Auteur : {{cours.Auteur}}</p>
+                 <p class="card-text"><small>Mis à jour il y a {{cours.Date_creation|timesince }}</small></p>
+                 </div>
+               <div class="card-footer"> 
+                 
+                <a href="{{cours.Support.url}} " download="{{ cours.Titre }}"  class= "btn btn-primary">Télécharger</a>
+                <a onclick="openFile('{{cours.Support.url}}')"  class= "btn btn-primary">ouvrir</a> 
+             
+               </div>
+             </div>
+        
+        {% endif %}
+     
+    {% endfor %}
+ </div>
+</section>
+
+<section id="section6" style="display:none;">
+  <div class="row" style="width: 100%;">
+    {% for cours in cours_list %}
+        {% if cours.Niveau_concerné == "option6" %}
+           
+             <div class="card mt-3 mx-3" id="v-pills-tabContent" role="tabpanel" aria-labelledby="v-pills-M3-tab" aria-orientation="horizontal" style="width: 18rem; height: 20rem; ">
+               <div class="card-header">
+                 <h5 class="card-title">{{cours.Titre}}</h5>
+               </div>
+                 <div class="card-body">
+                 <p class="card-text">{{cours.Description}}</p>
+                 <p class="card-text">Auteur : {{cours.Auteur}}</p>
+                 <p class="card-text"><small>Mis à jour il y a {{cours.Date_creation|timesince }}</small></p>
+                 </div>
+               <div class="card-footer"> 
+                 
+                <a href="{{cours.Support.url}} " download="{{ cours.Titre }}"  class= "btn btn-primary">Télécharger</a>
+                <a onclick="openFile('{{cours.Support.url}}')"  class= "btn btn-primary">ouvrir</a> 
+             
+               </div>
+             </div>
+        
+        {% endif %}
+     
+    {% endfor %}
+  </div>
+</section>
+
+
+{% block content %}
+
+<div style="height: 100px; width: 100%;">
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function showSection(sectionId) {
+  var sections = document.getElementsByTagName("section");
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].style.display = "none";
+  }
+  document.getElementById(sectionId).style.display = "block";
+}
+</script>
+
+        <footer class="pt-4 my-md-1 pt-md-1 border-top" style="width: 100%; background-color: rgb(28, 39, 35);">
+          <div class="row">
+            <div class="col-12 col-md"><div id="rdtheme_about-2" class="widget widget_rdtheme_about">
+              <a style="color: blanchedalmond;"><h5>ISSP</h5></a>
+              <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href=" {% url 'index_information_fil' %} ">Tout savoir sur l'ISSP</a></li>
+                <li><a class="text-muted" href="#">Contacter l'ISSP</a></li>
+                <li><a class="text-muted md-3 mr-3" href="#">Suivre l'ISSP</a></li>
+                
+                <div class="row">   <a href="https://www.facebook.com/issp.bf/" target="_blank"><i class="fab fa-facebook-f mx-3 border border-dark" > Facebook</i></a>                                       
+                   <a href="http://www.issp.bf/index.php/fr/" target="_blank"><i class="fab fa-google-plus-g mx-2 border border-dark">Google</i> </a>                   
+                </div> 
+
+              </ul>
+          
+                
+                </div>
+            </div>
+            <div class="col-6 col-md">
+              <a style="color: blanchedalmond;"><h5>Liens utiles</h5></a>
+              <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://www.ciospb.gov.bf/">CIOSPB</a></li>
+                <li><a class="text-muted" href="https://www.ujkz.bf/">UJKZ</a></li>
+                <li><a class="text-muted" href="https://www.oreilleducampus.org/">Oreille du campus</a></li>
+                <li><a class="text-muted" href="https://www.insd.bf/">INSD</a></li>
+                
+              </ul>
+            </div>
+            <div class="col-6 col-md">
+              <a style="color: blanchedalmond;"><h5>A propos du site</h5></a>
+              <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href=" http://127.0.0.1:8000/admin/">Publier</a></li>
+                <li><a class="text-muted" href=" http://127.0.0.1:8000/admin/">Administrateur</a></li>
+                <li><a class="text-muted" href="#">Nous contacter</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-md">
+              <a style="color: blanchedalmond;"><h5>............</h5></a>
+              <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Envoyez message</a></li>
+                <li><a class="text-muted" href="#">....</a></li>
+                <li><a class="text-muted" href="#">....</a></li>
+                <li><a class="text-muted" href="#">....</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
     
-  
-   <!--Pour ouvrir le site des cours exo et corrections  de L1-->
-   <p><a href=" {% url 'index_cours_L1' %} "   class= "btn btn-primary">Première année LPAS </a></p>
+        <script>
+          function openFile(fileUrl) {
+              // Logique pour ouvrir le fichier, par exemple :
+              // Vous pouvez rediriger vers une vue Django spécifique pour l'affichage
+              // ou utiliser des bibliothèques JavaScript pour afficher les PDF, etc.
+              // Ici, vous pouvez ouvrir un nouvel onglet avec le fichier
+              window.open(fileUrl, '_self');
+          }
+      </script>
 
-   <!--Pour ouvrir le site des cours exo et corrections  de L2-->
-   <p><a href=" {% url 'index_cours_L2' %} "   class= "btn btn-primary">Deuxième année LPAS </a></p>
+<script>
+  // Fonction appelée lors de la soumission du formulaire
+  function handleSearchSubmit() {
+      // Récupère la valeur de l'input de recherche
+      var searchValue = document.getElementById('searchInput').value.trim();
+      
+      // Si la valeur est vide, empêche la soumission du formulaire
+      if (searchValue === "") {
+          alert("Veuillez saisir un terme de recherche.");
+          return false;
+      }
+      
+      // Sinon, laisse la soumission du formulaire se dérouler normalement
+      return true;
+  }
 
-   <!--Pour ouvrir le site des cours exo et corrections  de L3-->
-   <p><a href=" {% url 'index_cours_L3' %} "   class= "btn btn-primary">Troisième année LPAS </a></p>
+  // Fonction pour initialiser la valeur de l'input de recherche après le chargement de la page
+  document.addEventListener('DOMContentLoaded', function() {
+      var searchInput = document.getElementById('searchInput');
+      
+      // Récupère le terme de recherche depuis l'URL s'il existe
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchQuery = urlParams.get('item_nom');
+      
+      // Met à jour la valeur de l'input de recherche avec le terme récupéré
+      if (searchQuery) {
+          searchInput.value = searchQuery;
+      }
+  });
+</script>
+
+      
+
+           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      
 
 
-
-
-<!--Pour Revenir à la page acceuil -->
-<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page d'acceuil </a></p>
-
-
-
-   <h3> <center> Cette partie est résever uniquement aux publicateurs. Pour y accéder cliquer sur le lien. </center></h3>
-
-
+   
    <!-- Ce lien permet aux publicateur d'acceder au backend du site et d'y poster leur publication-->
    <!--Username: pub , Code : pub123456-->
   
-  
-   <h4><center><a href=" http://127.0.0.1:8000/admin/" target="_blank" > Publier </center></a></h4>
-
-
 
 </body>
+</html>

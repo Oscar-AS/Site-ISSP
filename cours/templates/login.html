@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static%}
+  <html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device_width, initial-scale=1.0"> 
+<title> Formulaire de cpnnexion </title>
+<link rel="stylesheet"  href="{% static 'css/login.css' %}">
+</head>
+
+    
+
+
+<body>
+
+    <h2>Connexion</h2> <br>
+
+    <h3>Vous n'avez pas encore de compte!! <a class="nav-link text-white " href="{% url 'register' %}" >Créer un compte </a></h3>
+
+ 
+    <form method="post">
+      {% csrf_token %}
+      <label for="username">Nom d'utilisateur:</label>
+      <input type="text" id="username" name="username" value="{{ username|default_if_none:'' }}">
+      <br>
+      <label for="password">Mot de passe:</label>
+      <input type="password" id="password" name="password" value="{{ password|default_if_none:'' }}">
+      <br>
+      <button type="submit">Connexion</button>
+  </form>
+
+  {% if messages %}
+  <ul>
+  {% for message in messages %}
+      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+
+</body>
+</html>

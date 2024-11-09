@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+{% load static %}
+  <head>
+
+    <!-- Appel du fichier css-->
+    <link rel="stylesheet"  href="{% static 'css/Sujet.css' %}">
+
+   
+</head>
+
+<body>
+  
+  <header>
+    <h1><center> Bienvenue dans la page des sujets et résultats du test d'entrée à l'ISSP. </h1></center> 
+
+                                   <br> </br>
+    <a>
+      
+      <h2> Vous trouverez ici, des épreuves de la sélection</h2>
+
+      <div class= "contenant">
+  
+        <div class="contenant-onglets">
+          <div class="onglets active1" data-anim="1"> Préselection </div>
+          <div class="onglets " data-anim="2"> Sélection </div>
+          <div class="onglets " data-anim="3"> Résultats </div>
+        </div>
+      </div>
+  
+    </a>
+    
+  </header> 
+  
+<main>
+
+
+  <div class="conteneur"> 
+
+    <div class="conteneur-onglet" >
+    <div class="onglet active" data-id="1"> Epreuves</div>
+    <div class="onglet" data-id="2"> Corrigées</div>
+
+    <!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} " > Acceuil </a></p>
+
+  </div>
+
+
+
+<!--               Contenu pour Préselection                 -->
+
+
+  <div class="contenu1 activeContenu1" data-anim ="1">
+
+    <h2> Les anciens sujets et quelques propositions de corrections des tests de Préselections passées.</h2>
+    
+    <hr>
+
+    <div class="contenu2 activeContenu2" data-id="1">
+      
+      
+      <!-- Cette boucle nous affiche la liste de toutes les épreuves de preselections avec les détails de chacun -->
+
+     {% for sujet in  liste_sujet_pres %}
+
+         <!-- Pour afficher l'année'-->
+        <h2 class="card-title">Epreuve de l'an  {{sujet.Année}} </h2>
+       
+        <!--Pour télecharger le cours-->
+        <p><a href=" {{sujet.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+             
+       <!-- Pour afficher la date de publication -->
+        <p class= "card-text"> Publié il y a {{sujet.Date_creation|timesince }}, par {{sujet.Auteur }} , étudiant en {{sujet.Classe_auteur}} </p>
+       
+        <!-- Pour afficher le nombre de consulations-->
+        <p class= "card-text"> Ce document à été consulter {{sujet.Consultation}} fois </p>
+    
+    </div>
+</div>
+
+      {% endfor %}
+
+    </div>
+
+
+
+    <div class="contenu2" data-id="2">
+      
+      <!-- Cette boucle nous affiche la liste de toutes les corrections de préselection avec les détails de chacun -->
+
+
+     {% for sujet in  liste_sujet_pres_cor %}
+
+     <!-- Pour afficher l'année'-->
+    <h2 class="card-title">Epreuve de l'an  {{sujet.Année}} </h2>
+   
+    <!--Pour télecharger le cours-->
+    <p><a href=" {{sujet.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+         
+   <!-- Pour afficher la date de publication -->
+    <p class= "card-text"> Publié il y a {{sujet.Date_creation|timesince }}, par {{sujet.Auteur }} , étudiant en {{sujet.Classe_auteur}} </p>
+   
+    <!-- Pour afficher le nombre de consulations-->
+    <p class= "card-text"> Ce document à été consulter {{sujet.Consultation}} fois </p>
+
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+    
+   
+<!--               Contenu pour Sélection             -->
+
+<div class="contenu1" data-anim ="2">
+
+  <h2> Les anciens sujets et quelques propositions de corrections des tests de sélections passées.</h2>
+
+  <hr>
+
+  <div class="contenu2 activeContenu2" data-id="1">
+   
+    <!-- Cette boucle nous affiche la liste de toutes les épreuves de sélection avec les détails de chacun -->
+
+
+    {% for sujet in  liste_sujet_sel %}
+
+    <!-- Pour afficher l'année'-->
+   <h2 class="card-title">Epreuve de l'an  {{sujet.Année}} </h2>
+  
+   <!--Pour télecharger le cours-->
+   <p><a href=" {{sujet.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+        
+  <!-- Pour afficher la date de publication -->
+   <p class= "card-text"> Publié il y a {{sujet.Date_creation|timesince }}, par {{sujet.Auteur }} , étudiant en {{sujet.Classe_auteur}} </p>
+  
+   <!-- Pour afficher le nombre de consulations-->
+   <p class= "card-text"> Ce document à été consulter {{sujet.Consultation}} fois </p>
+
+</div>
+</div>
+
+{% endfor %}
+
+
+  </div>
+
+  
+  <div class="contenu2" data-id="2">
+    
+    <!-- Cette boucle nous affiche la liste de toutes les corrections de sélection avec les détails de chacun -->
+
+    
+    {% for sujet in  liste_sujet_sel_cor %}
+
+    <!-- Pour afficher l'année'-->
+   <h2 class="card-title">Epreuve de l'an  {{sujet.Année}} </h2>
+  
+   <!--Pour télecharger le cours-->
+   <p><a href=" {{sujet.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+        
+  <!-- Pour afficher la date de publication -->
+   <p class= "card-text"> Publié il y a {{sujet.Date_creation|timesince }}, par {{sujet.Auteur }} , étudiant en {{sujet.Classe_auteur}} </p>
+  
+   <!-- Pour afficher le nombre de consulations-->
+   <p class= "card-text"> Ce document à été consulter {{sujet.Consultation}} fois </p>
+
+</div>
+</div>
+
+{% endfor %}
+
+  </div>
+
+</div>
+    
+
+<!--               Contenu pour Resultats                 -->
+
+
+<div class="contenu1" data-anim ="3">
+
+  <h2><center> Les résultats des différents tests.</center></h2>
+
+  <hr>
+
+<!-- Cette boucle nous affiche la liste de tous les résultats de préselection avec les détails de chacun -->
+
+
+
+{% for sujet in  liste_sujet_res %}
+
+<!-- Pour afficher l'année'-->
+<h2 class="card-title">Epreuve de l'an  {{sujet.Année}} </h2>
+
+<!--Pour télecharger le cours-->
+<p><a href=" {{sujet.Support}} " download=""  class= "btn btn-primary">Télécharger </a></p>
+    
+<!-- Pour afficher la date de publication -->
+<p class= "card-text"> Publié il y a {{sujet.Date_creation|timesince }}, par {{sujet.Auteur }} , étudiant en {{sujet.Classe_auteur}} </p>
+
+<!-- Pour afficher le nombre de consulations-->
+<p class= "card-text"> Ce document à été consulter {{sujet.Consultation}} fois </p>
+
+</div>
+</div>
+
+{% endfor %}
+</div>
+   
+
+
+
+<!-- Appel du fichier javas script--> 
+<script src="{% static 'js/Sujet.js' %}"></script>
+  
+
+</main>
+
+
+<footer> 
+
+  <section>
+
+    <a> 
+  <nav> 
+    <!--Pour Revenir à la page acceuil -->
+    <h3><a href=" {% url 'index' %} "   class= "btn btn-primary">Acceuil </h3></p>
+
+    <!--Pour faire des commentaires -->
+    <h3><a href=" {% url 'formulaire_message' %} "   class= "btn btn-primary">Message </h3></p>
+
+    <!--Pour envoyer un mail  -->
+    <h3><a href="mailto:judicaelkafando1704@gmail.com">Nous envoyez un mail </h3></p>
+
+  </nav>
+
+</a>
+
+
+<a1>
+  <h3> Réserver uniquement aux publicateurs. </h3>
+
+
+  <!-- Ce lien permet aux publicateur d'acceder au backend du site et d'y poster leur publication-->
+  <!--Username: pub , Code : pub123456-->
+
+
+  <h3><center><a href=" http://127.0.0.1:8000/admin/" target="_blank" > Publier un document </center></a></h3>
+
+  <h3><center><a href=" http://127.0.0.1:8000/admin/" target="_blank" > Mettre à jours une publication </center></a></h3>
+
+</a1>
+
+
+<a1>
+  <h3>  Réserver uniquement aux administrateurs </h3>
+
+
+  <!-- Ce lien permet aux administrateur d'acceder au backend du site et d'y apporter de modification si necessaire-->
+
+
+  <h3><center><a href=" http://127.0.0.1:8000/admin/" target="_blank" > Espace administateur </center></a></h3>
+
+</a1>
+</section>
+  </footer>
+
+
+
+
+</body>

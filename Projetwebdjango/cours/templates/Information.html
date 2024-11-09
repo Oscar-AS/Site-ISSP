@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+  <head>
+
+    <!-- Appel du fichier css-->
+    <link rel="stylesheet"  href="{% static 'css/info.css' %}">
+    
+
+</head>
+
+<body>
+  
+  <h1><center> Informations </h1></center> 
+ 
+  <br> </br>
+  
+
+  
+    
+  
+ <!--Pour voir les informations sur la filiere-->
+ <p><a href=" {% url 'index_information_fil' %} "   class= "btn btn-primary">Tout savoir sur la filière </a></p>
+
+ <!--Pour voir les informations sur le site-->
+ <p><a href=" {% url 'index_information_site' %} "   class= "btn btn-primary">Tout savoir sur le site </a></p>
+
+
+
+ 
+
+ <div class= "container">
+
+  <div class="container-onglets">
+    <div class="onglets active" data-anim="1"> Tout savoir sur l'ISSP </div>
+    <div class="onglets " data-anim="2"> Tout savoir sur la filière </div>
+    <div class="onglets " data-anim="3"> Tout savoir sur le site </div>
+  </div>
+
+
+
+  
+  <!--               Contenu pour Tout savoir sur l'ISSP                 -->
+
+
+  <div class="contenu activeContenu" data-anim ="1">
+ 
+    Information sur l'issp
+
+  </div>
+
+<!--               Contenu pour Tout savoir sur la filière               -->
+
+
+  <div class="contenu" data-anim ="2">
+ 
+    Information sur la filière
+
+  </div>
+
+  <!--               Contenu pour Tout savoir sur le site               -->
+
+
+  <div class="contenu" data-anim ="3">
+ 
+    Information sur Tout savoir sur le site
+
+  </div>
+
+
+  <!-- Appel du fichier javas script--> 
+<script src="{% static 'js/info.js' %}"></script>
+    
+  
+
+
+      <!--Pour Revenir à la page acceuil -->
+<p><a href=" {% url 'index' %} "   class= "btn btn-primary">Page acceuil </a></p>

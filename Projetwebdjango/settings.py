@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+#from django.core.mail.backends.console import ConsoleBackend
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,8 @@ SECRET_KEY = 'django-insecure-$ym*6p6uchem!=1)og1oc7yzj%#f@@z*^(h$%n22e6^jj*-_3(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['judipython.pythonanywhere.com', 'www.judipython.pythonanywhere.com']
+
 
 
 # Application definition
@@ -51,6 +53,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+
+
+# Configuration des messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'error',
+}
+
+
 
 ROOT_URLCONF = 'Projetwebdjango.urls'
 
@@ -119,16 +134,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-#MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_URL = 'C:/Users/USER/Python/Projetwebdjango/cours/static/'
+STATICFILES_DIRS = [
+    'C:/Users/USER/Python/Projetwebdjango/media/'
+]
+
+MEDIA_URL = 'C:/Users/USER/Python/Projetwebdjango/media/'
+MEDIA_ROOT = 'C:/Users/USER/Python/Projetwebdjango/media/'
 
 # Configurer les paramètres pour l'envoi des mails
 
-#EMAIL_BACKEND = "django.core.mail.backends.console"
-#EMAIL_HOST = "smtp.gmail.com"
-#EMAIL_PORT = 587
-#EMAIL_USE_TLS = True
+DEBUG = True
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_PASSWORD = "cznq jcks dcrl vonm"
+EMAIL_HOST_USER = 'projetsiteweblpas@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 
 
@@ -136,3 +159,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#FILE_UPLOAD_HANDLERS = [
+ #      'django.core.files.uploadhandler.MemoryFileUploadHandler',
+  #     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+#]
+
+# Configurer django-sendfile
+#SENDFILE_BACKEND = 'django_sendfile.backends.nginx'
+#SENDFILE_BACKEND = 'sendfile.backends.xsendfile'

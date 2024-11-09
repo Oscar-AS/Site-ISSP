@@ -1,0 +1,91 @@
+
+@import url('htttps://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+   
+}
+
+body {
+    background-image: url("{% static 'batiment.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: antiquewhite;
+    display: flex ;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+form {
+    
+    
+    border-radius: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 8px rgba(0, 0, 0,0.1);
+    width: 500px;
+    padding: 5px;
+}
+
+form h2 {
+    color: #333;
+    font-size: 35px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+form h5 {
+    color: #333;
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+
+label {
+font-size: 16px;
+font-weight: 400;
+margin: 5px 0;
+text-transform: capitalize;
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 10px;
+transition: 0.5s;
+
+}
+
+input , textarea {
+  padding: 8px;
+  resize: none;
+  outline: 0;
+  border: 1px solid #999;
+  border-radius: 4px;
+
+}
+
+button{
+background-color: rgb(135, 135, 241);
+color: aliceblue;
+border: 0;
+border-radius: 4px;
+cursor: pointer;
+margin-top: 18px;
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 10px;
+transition: 0.5s;
+
+}
+
+button:hover {
+    transform: scale(1.02);
+
+} 

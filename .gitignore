@@ -1,0 +1,38 @@
+# Ignorer les fichiers Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorer les fichiers de configuration de l'IDE (ex: Visual Studio Code, PyCharm)
+.vscode/
+.idea/
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer la base de données SQLite
+db.sqlite3
+
+# Ignorer les fichiers médias (tels que les images, vidéos, fichiers audio, etc.)
+media/
+
+# Ignorer le dossier des dépendances Node.js (si tu utilises Node.js)
+node_modules/
+
+# Ignorer le fichier de configuration des packages (si applicable)
+package-lock.json
+package.json
+
+# Ignorer les fichiers temporaires
+*.swp
+*.bak
+*.tmp
+
+# Ignorer les fichiers générés automatiquement
+*.sqlite3
+*.db
+*.db-journal
+
+# Ignorer les fichiers système (Windows, MacOS, etc.)
+.DS_Store
+Thumbs.db

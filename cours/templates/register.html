@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Création de Compte</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h4>Création de Compte</h4>
+            </div>
+
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+            <div class="card-body">
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">Créer un Compte</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript pour gérer les contraintes de mot de passe -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var passwordField = document.getElementById('id_password1');
+        var password2Field = document.getElementById('id_password2');
+        var passwordHelpText = passwordField.parentNode.querySelector('.helptext');
+
+        // Cacher le texte d'aide par défaut
+        if (passwordHelpText) {
+          passwordHelpText.style.display = 'none';
+        }
+
+        function validatePassword() {
+          var value = passwordField.value;
+          var messages = [];
+
+          // Ajouter vos conditions de validation ici
+          if (value.length < 8) {
+            messages.push('Le mot de passe doit contenir au moins 8 caractères.');
+          }
+          if (!/[A-Z]/.test(value)) {
+            messages.push('Le mot de passe doit contenir au moins une lettre majuscule.');
+          }
+          if (!/[a-z]/.test(value)) {
+            messages.push('Le mot de passe doit contenir au moins une lettre minuscule.');
+          }
+          if (!/[0-9]/.test(value)) {
+            messages.push('Le mot de passe doit contenir au moins un chiffre.');
+          }
+
+          if (messages.length > 0) {
+            passwordHelpText.innerHTML = messages.join('<br>');
+            passwordHelpText.style.display = 'block';
+          } else {
+            passwordHelpText.style.display = 'none';
+          }
+        }
+
+        passwordField.addEventListener('input', validatePassword);
+      });
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
