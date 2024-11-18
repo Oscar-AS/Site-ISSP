@@ -6,7 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Georgia, 'Times New Roman', Times, serif;
-   
+
 }
 
 body {
@@ -24,8 +24,8 @@ body {
 }
 
 form {
-    
-    
+
+
     border-radius: 20px;
     padding-bottom: 20px;
     display: flex;
@@ -88,4 +88,4 @@ transition: 0.5s;
 button:hover {
     transform: scale(1.02);
 
-} 
+}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf import settings
-from django.conf.urls.static import static 
+from django.conf.urls.static import static
 from django.urls import include, path
 from cours.views import  evenement_create,ajout,sujet_create,cours_create,manage_requests,accept_request, reject_request,Membre_publicateur, index,contact,connexion, register,home,index_evenement,index_cours,index_sujet,index_sujet_pres,index_sujet_sel,index_information,index_information_fil,index_information_site,formulaire_message
 
@@ -18,17 +18,17 @@ urlpatterns = [
 
     path("Accueil/",index, name="index"),
     path("cours/",index_cours, name="index_cours"),
-    
+
 
 
     path('contact/', contact, name='contact'),
 
     path("evenement/",index_evenement, name="index_evenement"),
-    
+
     #path("cours/<str:fichier>",telechargé, name="telechargé"),
     path("sujet/",index_sujet, name="index_sujet"),
     path("sujet/selection/",index_sujet_sel, name="index_sujet_sel"),
-    
+
     path("sujet/preselection/",index_sujet_pres, name="index_sujet_pres"),
     path("information/",index_information, name="index_information"),
     path("information/filière",index_information_fil, name="index_information_fil"),

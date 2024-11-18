@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 
@@ -85,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Projetwebdjango.wsgi.application'
+WSGI_APPLICATION = 'judipython_pythonanywhere_com.wsgi.application'
 
 
 # Database
@@ -134,13 +134,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'C:/Users/USER/Python/Projetwebdjango/cours/static/'
-STATICFILES_DIRS = [
-    'C:/Users/USER/Python/Projetwebdjango/media/'
-]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = ['/home/judipython/Site-ISSP/media']
+STATIC_ROOT = '/home/judipython/Site-ISSP/cours/static'
 
-MEDIA_URL = 'C:/Users/USER/Python/Projetwebdjango/media/'
-MEDIA_ROOT = 'C:/Users/USER/Python/Projetwebdjango/media/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/judipython/Site-ISSP/media'
 
 # Configurer les paramètres pour l'envoi des mails
 

@@ -2,279 +2,255 @@
 <html lang="en">
   {% load static %}
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet"  href="{% static 'css/site.css' %}">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" >
-<!-- Chart.js -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <title>site de cours en ligne </title>
-  <style>
-      .titre{
-          font-family: Georgia, 'Times New Roman', Times, serif;
-          color: blue;
-
+    <title>Site de cours en ligne</title>
+    <style>
+      .titre {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: blue;
       }
-  </style>
+      .carousel-item img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 500px;
+      }
+      .footer-links a {
+        color: blanchedalmond;
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     <h3><strong><p class="text-center titre "><span class="auto-typing"></span> </p></strong></h3>
     <p class="text-center text-white"> l'ISSP <span class="auto-typing2"></span>   </p>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-dark shadow">
-        
-        <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              MENU
-            </a>
-          
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="{% url 'index_cours' %}">Cours</a>
-              <a class="dropdown-item" href="{% url 'index_evenement' %}">Evenements</a>
-              <a class="dropdown-item" href="{% url 'index_sujet' %}">Sujet des test </a>
-              <a class="dropdown-item" href="{% url 'index_information' %}">Informations</a>
-            </div>
-          </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-           
-            
-            <li class="nav-item">
-              <a class="nav-link text-white " href="{% url 'formulaire_message' %}" >Contactez-nous</a>
-            </li>
-           
-          </ul>
-        </div>
-        <ul class="nav justify-content-center">
-         
-          <li>
-            <p class="my-2 my-sm-0 " style=" font-size: large; color: antiquewhite; padding-block-end: 0%;">Bienvenue {{ user.username }}</p>
-          </li>
-          
-        </ul>
 
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'home' %}">Se deconnecter</a> 
-         
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-        
-        </ul>
-      </nav>
-      
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+
+          <!-- Toggler for mobile view -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <!-- Left-aligned menu -->
+              <ul class="navbar-nav me-auto">
+                  <!-- Dropdown menu -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Menu
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                          <li><a class="dropdown-item" href="{% url 'index_cours' %}">Cours</a></li>
+                          <li><a class="dropdown-item" href="{% url 'index_evenement' %}">Évènements</a></li>
+                          <li><a class="dropdown-item" href="{% url 'index_sujet' %}">Sujets des tests</a></li>
+                          <li><a class="dropdown-item" href="{% url 'index_information' %}">Informations</a></li>
+                          <li><a class="dropdown-item" href="{% url 'formulaire_message' %}">Contactez-nous</a></li>
+                      </ul>
+                  </li>
+              </ul>
+
+              <!-- Right-aligned user options -->
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <span class="nav-link mb-0 text-white">Bienvenue {{ user.username }}</span>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'home' %}">Se déconnecter</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+
     {% block content %}
-
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-       
-
         <div class="carousel-item active">
-          <img class="d-block w-100"style="height: 600px;" src="https://www.codeur.com/tuto/wp-content/uploads/2021/12/slide2.jpg" alt="First slide">
-         <div class="carousel-caption">
-            <h5> Premieres promotions de Master Professionnelle en Statistique Economique et de licence Professionnelle en Analyse Statistique</h5>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img class="d-block w-100" style="height: 600px;" src="{% static 'image-fond.jpg' %}" alt="Second slide">
+          <img class="img-fluid" src="https://www.codeur.com/tuto/wp-content/uploads/2021/12/slide2.jpg" alt="First slide">
           <div class="carousel-caption">
-            <h5> Etudiants en Licence Professionnelle en Analyse Statistique (promotion 2021) après la cérémonie de remise des ordinateurs.</h5>
-           
-          </div>
-        </div>
-        
-        <div class="carousel-item">
-          <img class="d-block w-100"style="height: 600px;" src="{% static 'Photo_P2.jpg' %}" alt="Third slide">
-         <div class="carousel-caption">
-            <h5> Etudiants en Licence Professionnelle en Analyse Statistique (deuxième promotion) lors de l'inauguration de la tenue vestimataire.</h5>
-
+            <h5>Premieres promotions de Master Professionnelle en Statistique Economique et de licence Professionnelle en Analyse Statistique</h5>
           </div>
         </div>
         <div class="carousel-item">
+          <img class="img-fluid" src="{% static 'img/image-fond.jpg' %}" alt="Second slide">
+          <div class="carousel-caption">
+            <h5>Etudiants en Licence Professionnelle en Analyse Statistique (promotion 2021) après la cérémonie de remise des ordinateurs.</h5>
+          </div>
+        </div>
 
-
-          <img class="d-block w-100" style="height: 600px;"src="https://www.codeur.com/tuto/wp-content/uploads/2021/12/slide3.jpg" alt="fourth slide">
-         <div class="carousel-caption">
-            <h5> Departement des statistiques du l'Institut Supérieur des Science de la Population </h5>
-
+        <div class="carousel-item">
+          <img class="img-fluid" src="{% static 'img/Photo_P2.jpg' %}" alt="Second slide">
+          <div class="carousel-caption">
+            <h5>Etudiants en Licence Professionnelle en Analyse Statistique (deuxième promotion) lors de l'inauguration de la tenue vestimataire.</h5>
           </div>
         </div>
       </div>
     </div>
-
     {% endblock %}
 
-    {% block contentt %}
-    <div class="pt-5 my-md-1 pt-md-1 border-top" style="width: 100%; background-color: rgb(23, 181, 181);" >
+    <div class="container my-5">
+      <div class="row text-center">
+        <div class="col-md-4 mb-3">
+          <div class="p-3 bg-light rounded shadow mb-3">
+            <h3>{{nbr_licence}}</h3>
+            <p>en Licence</p>
+          </div>
+          <div class="p-3 bg-light rounded shadow">
+            <h3>{{nbr_master}}</h3>
+            <p>en Master</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="p-3 bg-light rounded shadow mb-3">
+            <h3>{{nbr_licence | add:nbr_master}}</h3>
+            <p>Étudiants</p>
+          </div>
+          <div class="p-3 bg-light rounded shadow">
+            <h3>{{nbr_prof}}</h3>
+            <p>Professeurs</p>
+          </div>
+
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          <div class="p-3 bg-light rounded shadow" style="width: 250px; height: 250px;"> <!-- Ajustez ici -->
+            <center>
+                <canvas id="pieChart"></canvas>
+                <script>
+                  new Chart(document.getElementById('pieChart').getContext('2d'), {
+                    type: 'pie',
+                    data: {
+                      labels: ['Filles', 'Garçons'],
+                      datasets: [{
+                        data: [{{ nbr_fille }}, {{ nbr_garçon }}],
+                        backgroundColor: ['pink', 'blue']
+                      }]
+                    },
+                    options: {
+                      responsive: true,
+                      maintainAspectRatio: true // Assure la proportion
+                    }
+                  });
+                </script>
+            </center>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="container my-5">
       <div class="row">
+        {% for mot in liste_mot_dir %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="text-center">
+            <img src="{{ mot.Photo.url }}" class="rounded-circle img-fluid" alt="{{ mot.Nom }}" style="width: 120px; height: 120px;">
+          </div>
+          <div class="card mt-3 mx-auto" style="max-width: 20rem;">
+            <div class="card-header bg-primary text-white">
+            <center><h5 class="card-title mb-0">{{ mot.Nom }} {{ mot.Prénom }}</h5></center>
+            </div>
+            <div class="card-body">
+              <p style="text-align: justify;">{{ mot.Mot }}</p>
+            </div>
+          <center><b><div class="card-footer text-muted">{{ mot.Fonction }}</div></center></b>
+          </div>
+        </div>
+        {% endfor %}
 
-        
-        <div class="col-6 col-md">
-          <center><a style="color: blanchedalmond;"><h3>{{nbr_licence | add:nbr_master}}</h3></a>
-         
-          <a style="color: blanchedalmond;"><h5>étudiants</h5></a></center>
-        </div>
-        <div class="col-12 col-md">
-          <center><a style="color: blanchedalmond;"><h3> {{nbr_licence}}</h3></a>
-          
-          <a style="color: blanchedalmond;"><h5>en licence</h5></a></center>
-        </div>
-        <div class="col-6 col-md">
-          <center><a style="color: blanchedalmond;"><h3>{{nbr_master}}</h3></a>
-          
-          <a style="color: blanchedalmond;"><h5>en master</h5></a></center>
-        </div>
 
-        
-        <div class="col-6 col-md">
-          <center><a style="color: blanchedalmond;"><h3>{{nbr_prof}}</h3></a>
-          
-          <a style="color: blanchedalmond;"><h5>professeurs</h5></a></center>
-        </div>
-        <div class="col-6 col-md">
-          <center> <div style="height: auto; height: 200px;">
-            <canvas id="pieChart" width="50" height="50"></canvas>
-            <script>
-              var ctx = document.getElementById('pieChart').getContext('2d');
-              var myPieChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                  labels: ['Filles', 'Garçons'],
-                  datasets: [{
-                  label: 'Effectif',
-                  data: [{{ nbr_fille }} , {{ nbr_garçon }}],
-                  backgroundColor: ['pink', 'blue'],  // Couleurs pour les filles et les garçons
-                            }]
-                        },
-                        options: {}
-                    });
-                </script> </center>
-        </div>
 
+        {% for mot in liste_mot %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="text-center">
+            <img src="{{ mot.Photo.url }}" class="rounded-circle img-fluid" alt="{{ mot.Nom }}" style="width: 120px; height: 120px;">
+          </div>
+          <div class="card mt-3 mx-auto" style="max-width: 20rem;">
+            <div class="card-header bg-primary text-white">
+              <center><h5 class="card-title mb-0">{{ mot.Nom }} {{ mot.Prénom }}</h5></center>
+            </div>
+            <div class="card-body">
+              <p style="text-align: justify;">{{ mot.Mot }}</p>
+            </div>
+          <center><b><div class="card-footer text-muted">{{ mot.Fonction }}</div></center></b>
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
-{% endblock %}
 
-<div class="pt-3 my-md-1 pt-md-1 border-top" style="width: 100%; background-color: rgb(168, 170, 169);">
-  <div class="row">
-    
-    {% for mot in liste_mot_dir %}
-    <div class="col-6 col-md text-center mb-4">
-      <img src="{{ mot.Photo.url }}" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-      <div class="card mt-3 mx-3" style="width: 18rem; height: 20rem;">
-        <div class="card-header">
-          <h5 class="card-title">{{ mot.Nom }} {{ mot.Prénom }}</h5>
-        </div>
-        <div class="card-body">
-          <p class="card-text">{{ mot.Mot }}</p>
-        </div>
-        <div class="card-footer">{{ mot.Fonction }}</div>
-      </div>
-    </div>
-    {% endfor %}
-
-    {% for mot in liste_mot %}
-    <div class="col-6 col-md text-center mb-4">
-      <img src="{{ mot.Photo.url }}" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-      <div class="card mt-3 mx-3" style="width: 18rem; height: 20rem;">
-        <div class="card-header">
-          <h5 class="card-title">{{ mot.Nom }} {{ mot.Prénom }}</h5>
-        </div>
-        <div class="card-body">
-          <p class="card-text">{{ mot.Mot }}</p>
-        </div>
-        <div class="card-footer">{{ mot.Fonction }}</div>
-      </div>
-    </div>
-    {% endfor %}
-
-  </div>
-</div>
-
-
-
-{% block contenttt %}
-
-<div style="height: 75px; width: 100%;">
-</div>
-
-{% endblock %}
-
-
-<footer class="pt-4 my-md-1 pt-md-1 border-top" style="width: 100%; background-color: rgb(28, 39, 35);">
-  <div class="container">
-      <div class="row">
-          <div class="col-12 col-md-3 mb-3">
-              <div id="rdtheme_about-2" class="widget widget_rdtheme_about">
-                  <h5 style="color: blanchedalmond;">ISSP</h5>
-                  <ul class="list-unstyled text-small">
-                      <li><a class="text-muted" href="{% url 'index_information_fil' %}">Tout savoir sur l'ISSP</a></li>
-                      <li><a class="text-muted" href="#">Contacter l'ISSP</a></li>
-                      <li><a class="text-muted" href="#">Suivre l'ISSP</a></li>
+    <footer class="pt-4 text-white" style="background-color: rgb(28, 39, 35);">
+      <div class="container mb-3">
+        <div class="row">
+          <div class="col-12 col-md-4 mb-3">
+            <h5>ISSP</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="{% url 'index_information_fil' %}">Tout savoir sur l'ISSP</a></li>
+                      <li><a href="#">Contacter l'ISSP</a></li>
+                      <li><a href="#">Suivre l'ISSP</a></li>
                       <div class="d-flex mt-2">
-                          <a href="https://www.facebook.com/issp.bf/" target="_blank" class="text-muted mr-3">
+                          <a href="https://www.facebook.com/issp.bf/" target="_blank" class="mr-3">
                               <i class="fab fa-facebook-f"></i> Facebook
                           </a>
-                          <a href="http://www.issp.bf/index.php/fr/" target="_blank" class="text-muted">
+                          <a href="http://www.issp.bf/index.php/fr/" target="_blank" >
                               <i class="fab fa-google-plus-g"></i> Google
                           </a>
                       </div>
-                  </ul>
-              </div>
+            </ul>
           </div>
-          <div class="col-12 col-md-3 mb-3">
-              <h5 style="color: blanchedalmond;">Liens utiles</h5>
-              <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="https://www.ciospb.gov.bf/">CIOSPB</a></li>
-                  <li><a class="text-muted" href="https://www.ujkz.bf/">UJKZ</a></li>
-                  <li><a class="text-muted" href="https://www.oreilleducampus.org/">Oreille du campus</a></li>
-                  <li><a class="text-muted" href="https://www.insd.bf/">INSD</a></li>
-              </ul>
+          <div class="col-12 col-md-4 mb-3">
+            <h5>Liens utiles</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="https://www.ciospb.gov.bf/">CIOSPB</a></li>
+              <li><a   href="https://www.ujkz.bf/">UJKZ</a></li>
+              <li><a   href="https://www.oreilleducampus.org/">Oreille du campus</a></li>
+              <li><a   href="https://www.insd.bf/">INSD</a></li>
+            </ul>
           </div>
-          <div class="col-12 col-md-3 mb-3">
-              <h5 style="color: blanchedalmond;">À propos du site</h5>
-              <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="{% url 'ajout' %}">Publier</a></li>
-                  <li><a class="text-muted" href="{% url 'admin:index' %}">Administrateur</a></li>
-                  <li><a class="text-muted" href="#">Nous contacter</a></li>
-              </ul>
+          <div class="col-12 col-md-4 mb-3">
+            <h5>A propos du site</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a   href="{% url 'ajout' %}">Publier</a></li>
+              <li><a   href="{% url 'admin:index' %}">Administrateur</a></li>
+              <li><a   href="{% url 'formulaire_message' %}">Nous contacter</a></li>
+            </ul>
           </div>
-          <div class="col-12 col-md-3 mb-3">
-              <h5 style="color: blanchedalmond;">............</h5>
-              <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="{% url 'Membre_publicateur' %}">Devenir publicateur</a></li>
-                  <li><a class="text-muted" href="{% url 'manage_requests' %}">Demandes</a></li>
-                  <li><a class="text-muted" href="{% url 'register' %}">register</a></li>
-                  <li><a class="text-muted" href="{% url 'connexion' %}">login</a></li>
-              </ul>
+          <div class="col-12 col-md-4 mb-3">
+            <h5>Requêtes</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a   href="{% url 'Membre_publicateur' %}">Devenir publicateur</a></li>
+              <li><a   href="{% url 'manage_requests' %}">Demandes</a></li>
+              <li><a   href="{% url 'register' %}">register</a></li>
+              <li><a   href="{% url 'connexion' %}">login</a></li>
+            </ul>
           </div>
+        </div>
       </div>
-  </div>
-</footer>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    
+      <p class="mb-0">
+        <center>&copy; <span id="year"></span> Première promotion LPAS. Tous droits réservés.</center>
+      </p>
+    </footer>
 
 
 
-
-<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script> 
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
       var typed = new Typed('.auto-typing' , {
         strings: ['Bienvenue dans notre site de cours en ligne', 'Bienvenue dans notre site de cours en ligne', 'Bienvenue dans notre site de cours en ligne'],
         typeSpeed: 100,
@@ -286,19 +262,18 @@
       })
     </script>
 
-  <script> 
+    <script>
     var typed = new Typed('.auto-typing2' , {
-  strings: ["un centre d'excelence", "c'est plus qu'une école , un esprit", 'la référence en matière de statistique'],
-  typeSpeed: 100,
-  backSpeed: 100,
-  loop: true,
-  fadeOut:true,
-  fadeOutClass:'typed-fade-out',
-  fadeOutDelay: 500
-})
-</script>
-  
+    strings: ["un centre d'excelence", "c'est plus qu'une école , un esprit", 'la référence en matière de statistique'],
+    typeSpeed: 100,
+    backSpeed: 100,
+    loop: true,
+    fadeOut:true,
+    fadeOutClass:'typed-fade-out',
+    fadeOutDelay: 500
+    })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
-
-
