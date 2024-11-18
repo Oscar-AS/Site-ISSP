@@ -49,7 +49,7 @@ def home(request):
 
 ## Ce code permet d'afficher la page d'acceuil  des cours
 
-
+@login_required
 def index_cours(request):
        niveaux = Cours.objects.values_list('Niveau_concerné', flat=True).distinct()
        cours_list = Cours.objects.all().order_by('-Date_creation')
@@ -74,6 +74,7 @@ def index_cours(request):
 
 
 ## Ce code permet de lister tous les évènements qui ont été publié.
+@login_required
 def index_evenement(request):
    item_name=request.GET.get('item_nom')
    if item_name!='' and item_name is not None:
@@ -89,20 +90,10 @@ def index_evenement(request):
 
 
 
-## Ce code permet de compter les personnes qui ont déja consulter le cours.
-
-def nombre_consultation ( request, Cours_id) :
-    cours =get_object_or_404(cours, pk=Cours_id)
-    cours.Consultation +=1
-    cours.save()
-    return render(request,"Acceuil.html", {'cours': cours})
-
-
-
 
 
 ####################################################  SUJET ##################################################
-
+@login_required
 def index_sujet(request):
 
 
@@ -128,17 +119,19 @@ def index_sujet(request):
 
   return render (request, "Sujet.html" , context)
 
+@login_required
 def index_sujet_sel(request):
   liste_sujet_sel = Sujet.objects.filter(Type_test= 'option1')
   context={"liste_sujet_sel": liste_sujet_sel}
   return render (request,"Sujet_selection.html",context)
 
-
+@login_required
 def index_sujet_pres(request):
   liste_sujet_pres = Sujet.objects.filter(Type_test= 'option2')
   context={"liste_sujet_pres" : liste_sujet_pres}
   return render (request,"Sujet_preselection.html",context)
 
+@login_required
 def index_sujet_pres(request):
   liste_sujet_pres = Sujet.objects.filter(Type_test= 'option2')
   context={"liste_sujet_pres" : liste_sujet_pres}
@@ -147,19 +140,24 @@ def index_sujet_pres(request):
 
 
 ################################################### INFORMATION ########################################
-
+@login_required
 def index_information(request):
   return render (request, "Information.html")
 
+
+@login_required
 def index_information_fil(request):
   return render (request, "Information_filiere.html")
 
+
+@login_required
 def index_information_site(request):
   return render (request, "Information_site.html")
 
 
 ################################################### Formulaire message #######################"
 
+@login_required
 def contact(request):
        if request.method == 'POST':
            form = ContactForm(request.POST)
@@ -183,7 +181,7 @@ def contact(request):
 
 
 
-
+@login_required
 def formulaire_message(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -271,6 +269,7 @@ from django.contrib.auth.models import User, Group, Permission
 from .models import Membrepublicateur
 from .forms import MembrepublicateurForm
 
+@login_required
 def Membre_publicateur(request):
 
      # Vérification si l'utilisateur fait déjà partie des publicateurs
@@ -312,6 +311,7 @@ def Membre_publicateur(request):
         form = MembrepublicateurForm()
     return render(request, 'membre_publicateur.html', {'form': form})
 
+@login_required
 def manage_requests(request):
     if request.user.is_superuser:
 
@@ -325,6 +325,7 @@ def manage_requests(request):
         messages.info(request, "Vous n'êtes pas accesible à cette page")
         return redirect('index')
 
+@login_required
 def accept_request(request, request_id):
       if request.user.is_superuser:
         Membre_publicateur = Membrepublicateur.objects.get(id=request_id)
@@ -349,6 +350,7 @@ def accept_request(request, request_id):
       else:
         return redirect('index')
 
+@login_required
 def reject_request(request, request_id):
       if request.user.is_superuser:
         Membre_publicateur = Membrepublicateur.objects.get(id=request_id)

@@ -14,7 +14,7 @@ class   Cours(models.Model):
     Support = models.FileField(upload_to= 'pdfs/' ) # Pour les pdf
     Auteur = models.ForeignKey(User, on_delete=models.CASCADE)
     Date_creation = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return self.Titre
 
@@ -26,7 +26,7 @@ class Sujet(models.Model):
     Support = models.FileField(upload_to= 'pdfs/' ) # Pour les pdf
     Auteur = models.ForeignKey(User, on_delete=models.CASCADE)
     Date_creation = models.DateTimeField(auto_now_add=True)
-   
+
     def __str__(self):
         return self.Type_test
 
@@ -37,10 +37,10 @@ class Evenement(models.Model):
     Support = models.FileField(upload_to= 'media/' ) # Pour les pdf
     Auteur = models.ForeignKey(User, on_delete=models.CASCADE)
     Date_creation = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return self.Description
-    
+
 class Mots(models.Model):
     Nom =  models.CharField(max_length=100)
     Prénom =  models.CharField(max_length=100)
@@ -50,14 +50,14 @@ class Mots(models.Model):
     Date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.Mot
-    
+
 class Fond(models.Model):
     Description= models.TextField()
-    Support = models.FileField(upload_to='media/') 
+    Support = models.FileField(upload_to='media/')
     Date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.Description
-    
+
 class Statistique(models.Model):
     Nombre_fille= models.IntegerField()
     Nombre_garçon = models.IntegerField()
