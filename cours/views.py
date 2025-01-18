@@ -20,11 +20,14 @@ from django.db.models import Q
 # import os
 from . import views
 
+from django.contrib.auth.decorators import login_required
+
 ########################################################## COURS######################################
 
 ## Ce code permet d'afficher la page d'acceuil principale
 
 @login_required
+
 def index(request):
   liste_mot_dir =Mots.objects.filter(Q(Fonction__icontains= "directeur")).order_by('-Date')[:1]
 
@@ -47,23 +50,37 @@ def index(request):
 def home(request):
   return render (request, "Home.html")
 
-## Ce code permet d'afficher la page d'acceuil  des cours
+## Ce code permet d'afficher les cours suivant la classe
+
+from django.http import Http404
 
 @login_required
-def index_cours(request):
-       niveaux = Cours.objects.values_list('Niveau_concerné', flat=True).distinct()
-       cours_list = Cours.objects.all().order_by('-Date_creation')
+def index_cours(request, page_name):
+    # Liste des pages valides pour éviter les erreurs
+    valid_pages = ['Acceuil2','Master1', 'Master2', 'Master3', 'Licence1', 'Licence2', 'Licence3']
 
-       item_name=request.GET.get('item_nom')
-       if item_name!='' and item_name is not None:
-        niveaux = Cours.objects.values_list('Niveau_concerné', flat=True).distinct()
-        cours_list =Cours.objects.filter(Q(Description__icontains=item_name) | Q(Titre__icontains=item_name) | Q(Matiere_concerné__icontains=item_name) ).order_by('-Date_creation')
-       else:
-        niveaux = Cours.objects.values_list('Niveau_concerné', flat=True).distinct()
-        cours_list = Cours.objects.all().order_by('-Date_creation')
-       return render(request, 'Acceuil2.html', {'niveaux': niveaux ,'cours_list':cours_list})
+    if page_name not in valid_pages:
+        raise Http404("Page non trouvée")
 
+    # Logique de récupération des niveaux et des cours
+    niveaux = Cours.objects.values_list('Niveau_concerné', flat=True).distinct()
+    cours_list = Cours.objects.all().order_by('-Date_creation')
 
+    # Gestion de la recherche si un paramètre 'item_nom' est présent dans l'URL
+    item_name = request.GET.get('item_nom')
+    if item_name and item_name.strip():
+        cours_list = Cours.objects.filter(
+            Q(Description__icontains=item_name) |
+            Q(Titre__icontains=item_name) |
+            Q(Matiere_concerné__icontains=item_name)
+        ).order_by('-Date_creation')
+
+    # Passer les données au template correspondant
+    context = {'niveaux': niveaux, 'cours_list': cours_list, 'page_name': page_name}
+
+    # Sélection dynamique du template
+    template_name = f"{page_name}.html"
+    return render(request, template_name, context)
 
 
 
@@ -74,81 +91,113 @@ def index_cours(request):
 
 
 ## Ce code permet de lister tous les évènements qui ont été publié.
+
+from django.http import Http404
+
 @login_required
-def index_evenement(request):
-   item_name=request.GET.get('item_nom')
-   if item_name!='' and item_name is not None:
-      liste_photos= Evenement.objects.filter(Q(Type_support="option1") & Q(Description__icontains=item_name)).order_by('-Date_creation')
-      liste_videos= Evenement.objects.filter(Q(Type_support="option2") & Q(Description__icontains=item_name)).order_by('-Date_creation')
+def index_evenement(request, page_name):
+    # Liste des pages valides
+    valid_pages = ['Evenement_photo', 'Evenement_video']
 
-   else:
+    # Vérifier si la page demandée est valide
+    if page_name not in valid_pages:
+        raise Http404("Page non trouvée")
 
-      liste_photos= Evenement.objects.filter(Type_support="option1").order_by('-Date_creation')
-      liste_videos= Evenement.objects.filter(Type_support="option2").order_by('-Date_creation')
-   context ={"liste_photos": liste_photos, "liste_videos": liste_videos}
-   return render (request, "Evenement.html", context)
+    # Récupération des données
+    item_name = request.GET.get('item_nom')
 
+    if item_name and item_name.strip():  # Vérifie si 'item_nom' n'est pas vide
+        liste_photos = Evenement.objects.filter(
+            Q(Type_support="option1") & Q(Description__icontains=item_name)
+        ).order_by('-Date_creation')
+
+        liste_videos = Evenement.objects.filter(
+            Q(Type_support="option2") & Q(Description__icontains=item_name)
+        ).order_by('-Date_creation')
+    else:
+        liste_photos = Evenement.objects.filter(Type_support="option1").order_by('-Date_creation')
+        liste_videos = Evenement.objects.filter(Type_support="option2").order_by('-Date_creation')
+
+    # Préparer le contexte
+    context = {"liste_photos": liste_photos, "liste_videos": liste_videos, "page_name": page_name}
+
+    # Sélection dynamique du template
+    template_name = f"{page_name}.html"
+    return render(request, template_name, context)
 
 
 
 
 ####################################################  SUJET ##################################################
-@login_required
-def index_sujet(request):
-
-
-  item_name=request.GET.get('item_nom')
-  if item_name!='' and item_name is not None:
-
-    liste_sujet_sel = Sujet.objects.filter(Q(Type_test= 'option1') & Q(Type_sujet= 'option1') & Q( Année__icontains=item_name)).order_by('-Date_creation')
-    liste_sujet_pres = Sujet.objects.filter(Q(Type_test= 'option2') & Q(Type_sujet= 'option1') & Q( Année__icontains=item_name)).order_by('-Date_creation')
-    liste_sujet_res = Sujet.objects.filter(Q(Type_test= 'option3') & Q( Année__icontains=item_name)).order_by('-Date_creation')
-
-    liste_sujet_sel_cor = Sujet.objects.filter(Q(Type_test= 'option1') & Q(Type_sujet= 'option2') & Q( Année__icontains=item_name)).order_by('-Date_creation')
-    liste_sujet_pres_cor = Sujet.objects.filter(Q(Type_test= 'option2') & Q(Type_sujet= 'option2') & Q( Année__icontains=item_name)).order_by('-Date_creation')
-
-  else:
-    liste_sujet_sel = Sujet.objects.filter(Type_test= 'option1' , Type_sujet= 'option1').order_by('-Date_creation')
-    liste_sujet_pres = Sujet.objects.filter(Type_test= 'option2' , Type_sujet= 'option1').order_by('-Date_creation')
-    liste_sujet_res = Sujet.objects.filter(Type_test= 'option3').order_by('-Date_creation')
-
-    liste_sujet_sel_cor = Sujet.objects.filter(Type_test= 'option1' , Type_sujet= 'option2').order_by('-Date_creation')
-    liste_sujet_pres_cor = Sujet.objects.filter(Type_test= 'option2' , Type_sujet= 'option2').order_by('-Date_creation')
-
-  context={"liste_sujet_sel": liste_sujet_sel , "liste_sujet_pres" : liste_sujet_pres , "liste_sujet_res" : liste_sujet_res , "liste_sujet_sel_cor": liste_sujet_sel_cor , "liste_sujet_pres_cor" : liste_sujet_pres_cor}
-
-  return render (request, "Sujet.html" , context)
+from django.shortcuts import render
+from django.db.models import Q
+from django.http import Http404
+from .models import Sujet
 
 @login_required
-def index_sujet_sel(request):
-  liste_sujet_sel = Sujet.objects.filter(Type_test= 'option1')
-  context={"liste_sujet_sel": liste_sujet_sel}
-  return render (request,"Sujet_selection.html",context)
+def index_sujet(request, page_name):
+    # Liste des pages valides pour éviter les erreurs
+    valid_pages = ['Sujet','Select_corrige', 'Select_sujet', 'Preselect_sujet', 'Preselect_corrige', 'Resultats']
 
-@login_required
-def index_sujet_pres(request):
-  liste_sujet_pres = Sujet.objects.filter(Type_test= 'option2')
-  context={"liste_sujet_pres" : liste_sujet_pres}
-  return render (request,"Sujet_preselection.html",context)
+    # Vérifie si la page demandée est valide
+    if page_name not in valid_pages:
+        raise Http404("Page non trouvée")
 
-@login_required
-def index_sujet_pres(request):
-  liste_sujet_pres = Sujet.objects.filter(Type_test= 'option2')
-  context={"liste_sujet_pres" : liste_sujet_pres}
-  return render (request,"Sujet_preselection.html",context)
+    # Récupération des paramètres de recherche
+    item_name = request.GET.get('item_nom')
+
+    # Application des filtres en fonction du paramètre 'item_nom'
+    if item_name and item_name.strip():
+        liste_sujet_sel = Sujet.objects.filter(
+            Q(Type_test='option1') & Q(Type_sujet='option1') & Q(Année__icontains=item_name)
+        ).order_by('-Date_creation')
+
+        liste_sujet_pres = Sujet.objects.filter(
+            Q(Type_test='option2') & Q(Type_sujet='option1') & Q(Année__icontains=item_name)
+        ).order_by('-Date_creation')
+
+        liste_sujet_res = Sujet.objects.filter(
+            Q(Type_test='option3') & Q(Année__icontains=item_name)
+        ).order_by('-Date_creation')
+
+        liste_sujet_sel_cor = Sujet.objects.filter(
+            Q(Type_test='option1') & Q(Type_sujet='option2') & Q(Année__icontains=item_name)
+        ).order_by('-Date_creation')
+
+        liste_sujet_pres_cor = Sujet.objects.filter(
+            Q(Type_test='option2') & Q(Type_sujet='option2') & Q(Année__icontains=item_name)
+        ).order_by('-Date_creation')
+
+    else:
+        # Filtres sans recherche
+        liste_sujet_sel = Sujet.objects.filter(Type_test='option1', Type_sujet='option1').order_by('-Date_creation')
+        liste_sujet_pres = Sujet.objects.filter(Type_test='option2', Type_sujet='option1').order_by('-Date_creation')
+        liste_sujet_res = Sujet.objects.filter(Type_test='option3').order_by('-Date_creation')
+
+        liste_sujet_sel_cor = Sujet.objects.filter(Type_test='option1', Type_sujet='option2').order_by('-Date_creation')
+        liste_sujet_pres_cor = Sujet.objects.filter(Type_test='option2', Type_sujet='option2').order_by('-Date_creation')
+
+    # Préparer le contexte à passer au template
+    context = {
+        "liste_sujet_sel": liste_sujet_sel,
+        "liste_sujet_pres": liste_sujet_pres,
+        "liste_sujet_res": liste_sujet_res,
+        "liste_sujet_sel_cor": liste_sujet_sel_cor,
+        "liste_sujet_pres_cor": liste_sujet_pres_cor,
+        "page_name": page_name  # Vous pouvez l'utiliser dans vos templates pour afficher la page actuelle
+    }
+
+    # Sélection dynamique du template en fonction de la page demandée
+    template_name = f"{page_name}.html"
+    return render(request, template_name, context)
 
 
 
 ################################################### INFORMATION ########################################
+
 @login_required
 def index_information(request):
   return render (request, "Information.html")
-
-
-@login_required
-def index_information_fil(request):
-  return render (request, "Information_filiere.html")
-
 
 @login_required
 def index_information_site(request):
@@ -157,7 +206,6 @@ def index_information_site(request):
 
 ################################################### Formulaire message #######################"
 
-@login_required
 def contact(request):
        if request.method == 'POST':
            form = ContactForm(request.POST)
@@ -181,7 +229,6 @@ def contact(request):
 
 
 
-@login_required
 def formulaire_message(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -205,9 +252,6 @@ def formulaire_message(request):
 
 
 
-
-
-
 ########################################## CREATION DU COMPTE ####################################
 
 
@@ -226,7 +270,11 @@ def connexion(request):
 
     return render(request, "login.html")
 
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import UserForm
 
 def register(request):
     if request.method == "POST":
@@ -262,6 +310,8 @@ def register(request):
 
     return render(request, "register.html", {"form": form})
 
+
+
 ########################################################################################### DEMANDE PUBLICATEUR################################""
 
 from django.shortcuts import render, redirect
@@ -269,7 +319,6 @@ from django.contrib.auth.models import User, Group, Permission
 from .models import Membrepublicateur
 from .forms import MembrepublicateurForm
 
-@login_required
 def Membre_publicateur(request):
 
      # Vérification si l'utilisateur fait déjà partie des publicateurs
@@ -311,7 +360,6 @@ def Membre_publicateur(request):
         form = MembrepublicateurForm()
     return render(request, 'membre_publicateur.html', {'form': form})
 
-@login_required
 def manage_requests(request):
     if request.user.is_superuser:
 
@@ -325,7 +373,6 @@ def manage_requests(request):
         messages.info(request, "Vous n'êtes pas accesible à cette page")
         return redirect('index')
 
-@login_required
 def accept_request(request, request_id):
       if request.user.is_superuser:
         Membre_publicateur = Membrepublicateur.objects.get(id=request_id)
@@ -350,7 +397,6 @@ def accept_request(request, request_id):
       else:
         return redirect('index')
 
-@login_required
 def reject_request(request, request_id):
       if request.user.is_superuser:
         Membre_publicateur = Membrepublicateur.objects.get(id=request_id)

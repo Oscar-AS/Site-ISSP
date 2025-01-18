@@ -1,0 +1,62 @@
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="" class="logo d-flex align-items-center">
+            <span class="sitename">ISSP</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>Institut Supérieur des Sciences de la Population</p>
+            <p>Université Joseph KI-ZERBO</p>
+            <p class="mt-3"><strong>Tel:</strong> <span> +226 25 30 25 58 / +226 25 30 25 59</span></p>
+            <p><strong>Email:</strong> <span>directeur@issp.bf</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.facebook.com/issp.bf/"><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="http://www.issp.bf/index.php/fr/"><i class="bi bi-google"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Liens utiles</h4>
+            <ul>
+                <li><a href="https://www.ciospb.gov.bf/">CIOSPB</a></li>
+                <li><a href="https://www.ujkz.bf/">UJKZ</a></li>
+                <li><a href="https://www.oreilleducampus.org/">Oreille du campus</a></li>
+                <li><a href="https://www.insd.bf/">INSD</a></li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>A propos du site</h4>
+          <ul>
+            <li><a href="{% url 'ajout' %}">Publier</a></li>
+            <li><a href="{% url 'admin:index' %}">Administrateur</a></li>
+            <li><a href="{% url 'formulaire_message' %}">Nous contacter</a></li>
+            <li><a href="{% url 'index_information_site' %}">Informations</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Requêtes</h4>
+          <ul>
+            <li><a href="{% url 'Membre_publicateur' %}">Devenir publicateur</a></li>
+            <li><a href="{% url 'manage_requests' %}">Voir les Demandes</a></li>
+            <li><a href="{% url 'register' %}">register</a></li>
+            <li><a href="{% url 'connexion' %}">Connexion</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Première promotion LPAS.</strong> <span>Tous droits réservés.</span></p>
+    </div>
+
+  </footer>

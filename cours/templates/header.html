@@ -1,0 +1,89 @@
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+    <a href="" class="logo d-flex align-items-center me-auto">
+      <h1 class="sitename">{{ user.username }}</h1>
+    </a>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <!-- Accueil -->
+        <li >
+          <a href="{% url 'index' %}" class="{% if active == 'home' %}active{% endif %}">Accueil</a>
+        </li>
+
+        <!-- Cours -->
+        <li class="dropdown">
+          <a href="{% url 'index_cours' page_name='Acceuil2' %}" class="{% if active == 'cours' %}active{% endif %}"><span>Cours</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li class="dropdown">
+              <a class="{% if sactive == 'licence' %}active{% endif %}"><span>Licence</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li ><a href="{% url 'index_cours' page_name='Licence1' %}" class="{% if ssactive == 'licence1' %}active{% endif %}">Licence 1</a></li>
+                <li ><a href="{% url 'index_cours' page_name='Licence2' %}" class="{% if ssactive == 'licence2' %}active{% endif %}">Licence 2</a></li>
+                <li ><a href="{% url 'index_cours' page_name='Licence3' %}" class="{% if ssactive == 'licence3' %}active{% endif %}">Licence 3</a></li>
+              </ul>
+            </li>
+            <li >
+              <a href="#" class="dropdown {% if sactive == 'master' %}active{% endif %}"><span>Master</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li ><a href="{% url 'index_cours' page_name='Master1' %}" class="{% if ssactive == 'master1' %}active{% endif %}">Master 1</a></li>
+                <li ><a href="{% url 'index_cours' page_name='Master2' %}" class="{% if ssactive == 'master2' %}active{% endif %}">Master 2</a></li>
+                <li ><a href="{% url 'index_cours' page_name='Master3' %}" class="{% if ssactive == 'master3' %}active{% endif %}">Master 3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Tests d'entrée -->
+        <li class="dropdown" >
+          <a href="{% url 'index_sujet' page_name='Sujet' %}" class="{% if active == 'tests' %}active{% endif %}"><span>Tests d'entrée</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li class="dropdown" >
+              <a href="#" class=" {% if sactive == 'preselections' %}active{% endif %}"><span>Présélections</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li ><a href="{% url 'index_sujet' page_name='Preselect_sujet' %}" class="{% if ssactive == 'preselect_sujet' %}active{% endif %}">Sujets</a></li>
+                <li ><a href="{% url 'index_sujet' page_name='Preselect_corrige' %}" class="{% if ssactive == 'preselect_corrige' %}active{% endif %}">Propositions de corrigés</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="{% if sactive == 'selections' %}active{% endif %}"><span>Sélections</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li ><a href="{% url 'index_sujet' page_name='Select_sujet' %}" class="{% if ssactive == 'select_sujet' %}active{% endif %}">Sujets</a></li>
+                <li ><a href="{% url 'index_sujet' page_name='Select_corrige' %}" class="{% if ssactive == 'select_corrige' %}active{% endif %}">Propositions de corrigés</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="{% url 'index_sujet' page_name='Resultats' %}" class="{% if sactive == 'resultats' %}sactive{% endif %}">Résultats des tests</a></li>
+          </ul>
+        </li>
+
+        <!-- Evénements -->
+        <li class="dropdown ">
+          <a href="#" class = "{% if active == 'evenements' %}active{% endif %}"><span>Evènements</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li ><a href="{% url 'index_evenement' page_name='Evenement_photo' %}" class="{% if sactive == 'photos' %}active{% endif %}">Photos</a></li>
+            <li ><a href="{% url 'index_evenement' page_name='Evenement_video' %}" class="{% if sactive == 'videos' %}active{% endif %}">Vidéos</a></li>
+          </ul>
+        </li>
+
+        <!-- Informations -->
+        <li class="dropdown ">
+          <a href="#" class="{% if active == 'informations' %}active{% endif %}"><span>Informations</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li ><a href="{% url 'index_information_site' %}" class="{% if sactive == 'site' %}active{% endif %}">Informations sur le Site</a></li>
+            <li ><a href="{% url 'index_information' %}" class="{% if sactive == 'issp' %}active{% endif %}">Informations sur l'ISSP</a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li >
+          <a href="{% url 'formulaire_message' %}" class="{% if active == 'contact' %}active{% endif %}">Contact</a>
+        </li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+    <!-- Bouton Déconnexion -->
+    <a class="btn-getstarted" href="{% url 'home' %}">Déconnexion</a>
+  </div>
+</header>

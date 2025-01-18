@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+import re
 
 from .models import DemandePublicateur,Cours,Sujet,Evenement
 
@@ -21,31 +23,35 @@ class DemandePublicateurForm(forms.ModelForm):
 
 
 
-
-
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
+from django.contrib.auth.models import User
 
 class UserForm(UserCreationForm):
-    #profil =forms.ImageField(required=False,initial="https://thumbs.dreamstime.com/b/avatar-par-d%C3%A9faut-ic%C3%B4ne-profil-vectoriel-m%C3%A9dias-sociaux-utilisateur-portrait-176256935.jpg")
     nom = forms.CharField(max_length=100)
     prenom = forms.CharField(max_length=100)
     email = forms.EmailField()
-    filière = forms.ChoiceField(choices =[('option1','Licence profesionnelle en Analyse statistique') , ('option2','Master professionnelle en Statistique économie') ])
-    classe = forms.ChoiceField(choices =[('option1','Première année'), ('option2','Deuxième année'), ('option3','Troisième année')])
-
+    filière = forms.ChoiceField(choices=[
+        ('option1', 'Licence professionnelle en Analyse statistique'),
+        ('option2', 'Master professionnelle en Statistique économie')
+    ])
+    classe = forms.ChoiceField(choices=[
+        ('option1', 'Première année'),
+        ('option2', 'Deuxième année'),
+        ('option3', 'Troisième année')
+    ])
 
     class Meta:
         model = User
-        fields = ['nom','prenom','username','email', 'filière','classe','password1','password2']
-        help_texts={
+        fields = ['nom', 'prenom', 'username', 'email', 'filière', 'classe', 'password1', 'password2']
+        help_texts = {
             'username': None,
-            'password1' : None,
-            'password2' : None
+            'password1': None,
+            'password2': None
         }
 
-
     def save(self, commit=True):
-        user=super(UserForm,self).save(commit=False)
-        #user.profil = self.cleaned_data['profil']
+        user = super(UserForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
         user.nom = self.cleaned_data['nom']
         user.username = self.cleaned_data['username']
@@ -53,15 +59,13 @@ class UserForm(UserCreationForm):
         user.filière = self.cleaned_data['filière']
         user.classe = self.cleaned_data['classe']
 
-        if commit :
+        if commit:
             user.save()
         return user
-    
-    
 
 
 ########################################################################################################""
-    
+
 from django import forms
 from .models import Membrepublicateur
 
@@ -73,7 +77,7 @@ class MembrepublicateurForm(forms.ModelForm):
 
 
 
-######################################### Formulaire pour ajouter les 
+######################################### Formulaire pour ajouter les
 
 class CoursForm(forms.ModelForm):
     class Meta:
@@ -86,11 +90,11 @@ class SujetForm(forms.ModelForm):
     class Meta:
         model = Sujet
         fields = ['Type_test', 'Type_sujet', 'Année', 'Niveau', 'Support']
-        
+
 
 
 class EvenementForm(forms.ModelForm):
     class Meta:
         model = Evenement
         fields = ['Type_support', 'Titre', 'Description', 'Support']
-        
+

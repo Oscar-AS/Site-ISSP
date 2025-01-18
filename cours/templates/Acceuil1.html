@@ -1,279 +1,251 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  {% load static %}
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Site de cours en ligne</title>
-    <style>
-      .titre {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        color: blue;
-      }
-      .carousel-item img {
-        object-fit: cover;
-        width: 100%;
-        max-height: 500px;
-      }
-      .footer-links a {
-        color: blanchedalmond;
-        text-decoration: none;
-      }
-      .footer-links a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-  <body>
-    <h3><strong><p class="text-center titre "><span class="auto-typing"></span> </p></strong></h3>
-    <p class="text-center text-white"> l'ISSP <span class="auto-typing2"></span>   </p>
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Site de cours en ligne</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+</head>
+
+<body class="about-page">
+{% include 'header.html' with active="home" %}
+
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+        <img src="{% static 'assets/img/hero-bg.jpg' %}" alt="" data-aos="fade-in">
+
+        <div class="container">
+          <h2 data-aos="fade-up" data-aos-delay="100">Apprendre des prédécesseurs,<br>Pour mieux faire.</h2>
+          <p data-aos="fade-up" data-aos-delay="200">Nous vous offrons dans ce site toutes les ressources nécessaires.</p>
+        </div>
+
+      </section><!-- /Hero Section -->
+
+    <!-- About Us Section -->
+    <section id="about-us" class="section about-us">
+
       <div class="container">
 
-          <!-- Toggler for mobile view -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+        <div class="row gy-4">
 
-          <!-- Collapsible content -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <!-- Left-aligned menu -->
-              <ul class="navbar-nav me-auto">
-                  <!-- Dropdown menu -->
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Menu
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                          <li><a class="dropdown-item" href="{% url 'index_cours' %}">Cours</a></li>
-                          <li><a class="dropdown-item" href="{% url 'index_evenement' %}">Évènements</a></li>
-                          <li><a class="dropdown-item" href="{% url 'index_sujet' %}">Sujets des tests</a></li>
-                          <li><a class="dropdown-item" href="{% url 'index_information' %}">Informations</a></li>
-                          <li><a class="dropdown-item" href="{% url 'formulaire_message' %}">Contactez-nous</a></li>
-                      </ul>
-                  </li>
-              </ul>
+            <div id="carouselExampleFade" class="carousel slide carousel-fade col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="5000">
+                    <img src="{% static 'assets/img/about-2.jpg' %}" class="d-block w-100 img-fluid" alt="">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkKiNTFAUQIIUbLzctWh8jUco4P1KKLgdIyA&s" class="d-block w-100 img-fluid" alt="">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9xh8Bl2AA9ay8LQHbuEmK_hgmQJnq6Nu87g&s" class="d-block w-100 img-fluid" alt="Image 3">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Précédent</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Suivant</span>
+                </a>
+              </div>
 
-              <!-- Right-aligned user options -->
-              <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                      <span class="nav-link mb-0 text-white">Bienvenue {{ user.username }}</span>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'home' %}">Se déconnecter</a>
-                  </li>
-              </ul>
+
+          <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
+            <h3>Objectif et contenu de la plateforme</h3>
+            <p class="fst-italic">
+              Dans ce site, vous y trouverez une large game de services. L'objectif étant de vous donner les ressources nécessaires pour une réussite brillante de la formation ainsi que des connaisances nécessaires sur la statistique.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> <span>Supports numériques des cours, devoirs et TD pour tous les niveaux.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Des informations d'ordre général ( au niveau national et international) et d'autres spécifiques sur l'ISSP et la statistique.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Les moments forts des différents évènements. Les évènements concernant non seulement l'ISSP de façon général, mais aussi concernant les différents clubs à savoir le club d'informatique, de sport, d'art oratoire et d'anglais.</span></li>
+            </ul>
           </div>
+
+        </div>
+
       </div>
-  </nav>
 
+    </section><!-- Acceuil Section -->
 
-    {% block content %}
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="img-fluid" src="https://www.codeur.com/tuto/wp-content/uploads/2021/12/slide2.jpg" alt="First slide">
-          <div class="carousel-caption">
-            <h5>Premieres promotions de Master Professionnelle en Statistique Economique et de licence Professionnelle en Analyse Statistique</h5>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="img-fluid" src="{% static 'img/image-fond.jpg' %}" alt="Second slide">
-          <div class="carousel-caption">
-            <h5>Etudiants en Licence Professionnelle en Analyse Statistique (promotion 2021) après la cérémonie de remise des ordinateurs.</h5>
-          </div>
-        </div>
+    <!-- etudiant/profs Section -->
+    <section id="counts" class="section counts light-background">
 
-        <div class="carousel-item">
-          <img class="img-fluid" src="{% static 'img/Photo_P2.jpg' %}" alt="Second slide">
-          <div class="carousel-caption">
-            <h5>Etudiants en Licence Professionnelle en Analyse Statistique (deuxième promotion) lors de l'inauguration de la tenue vestimataire.</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endblock %}
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-    <div class="container my-5">
-      <div class="row text-center">
-        <div class="col-md-4 mb-3">
-          <div class="p-3 bg-light rounded shadow mb-3">
-            <h3>{{nbr_licence}}</h3>
-            <p>en Licence</p>
-          </div>
-          <div class="p-3 bg-light rounded shadow">
-            <h3>{{nbr_master}}</h3>
-            <p>en Master</p>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="p-3 bg-light rounded shadow mb-3">
-            <h3>{{nbr_licence | add:nbr_master}}</h3>
-            <p>Étudiants</p>
-          </div>
-          <div class="p-3 bg-light rounded shadow">
-            <h3>{{nbr_prof}}</h3>
-            <p>Professeurs</p>
-          </div>
+            <div class="row gy-4">
 
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="{{nbr_licence | add:nbr_master}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Etudiants</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="{{nbr_licence}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>En licence</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="{{nbr_master}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>En masters</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="{{nbr_prof}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Professeurs</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+            </div>
         </div>
 
 
-        <div class="col-md-4 mb-3">
-          <div class="p-3 bg-light rounded shadow" style="width: 250px; height: 250px;"> <!-- Ajustez ici -->
-            <center>
-                <canvas id="pieChart"></canvas>
-                <script>
-                  new Chart(document.getElementById('pieChart').getContext('2d'), {
-                    type: 'pie',
-                    data: {
-                      labels: ['Filles', 'Garçons'],
-                      datasets: [{
-                        data: [{{ nbr_fille }}, {{ nbr_garçon }}],
-                        backgroundColor: ['pink', 'blue']
-                      }]
+    </section><!-- /Counts Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Témoignages</h2>
+        <p>Qu'en pensez-vous de ce site?</p>
+      </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="swiper init-swiper">
+                <script type="application/json" class="swiper-config">
+                    {
+                    "loop": true,
+                    "speed": 600,
+                    "autoplay": {
+                        "delay": 5000
                     },
-                    options: {
-                      responsive: true,
-                      maintainAspectRatio: true // Assure la proportion
+                    "slidesPerView": "auto",
+                    "pagination": {
+                        "el": ".swiper-pagination",
+                        "type": "bullets",
+                        "clickable": true
+                    },
+                    "breakpoints": {
+                        "320": {
+                        "slidesPerView": 1,
+                        "spaceBetween": 40
+                        },
+                        "1200": {
+                        "slidesPerView": 2,
+                        "spaceBetween": 20
+                        }
                     }
-                  });
+                    }
                 </script>
-            </center>
-          </div>
+                <div class="swiper-wrapper">
+                    {% for mot in liste_mot_dir %}
+                    <div class="swiper-slide">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                        <img src="{{ mot.Photo.url }}" class="testimonial-img" alt="">
+                        <h3>{{ mot.Nom }} {{ mot.Prénom }}</h3>
+                        <h4>{{ mot.Fonction }}</h4>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>
+                            <i class="bi bi-quote quote-icon-left"></i>
+                            <span>{{ mot.Mot }}</span>
+                            <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                        </div>
+                    </div>
+                    </div><!-- End testimonial item -->
+                    {% endfor %}
+
+                    {% for mot in liste_mot %}
+                    <div class="swiper-slide">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                        <img src="{{ mot.Photo.url }}" class="testimonial-img" alt="">
+                        <h3>{{ mot.Nom }} {{ mot.Prénom }}</h3>
+                        <h4>{{ mot.Fonction }}</h4>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>
+                            <i class="bi bi-quote quote-icon-left"></i>
+                            <span>{{ mot.Mot }}</span>
+                            <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                        </div>
+                    </div>
+                    </div><!-- End testimonial item -->
+                    {% endfor %}
+
+                </div>
+            <div class="swiper-pagination"></div>
         </div>
 
-
-      </div>
-    </div>
-
-
-
-    <div class="container my-5">
-      <div class="row">
-        {% for mot in liste_mot_dir %}
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
-          <div class="text-center">
-            <img src="{{ mot.Photo.url }}" class="rounded-circle img-fluid" alt="{{ mot.Nom }}" style="width: 120px; height: 120px;">
-          </div>
-          <div class="card mt-3 mx-auto" style="max-width: 20rem;">
-            <div class="card-header bg-primary text-white">
-            <center><h5 class="card-title mb-0">{{ mot.Nom }} {{ mot.Prénom }}</h5></center>
-            </div>
-            <div class="card-body">
-              <p style="text-align: justify;">{{ mot.Mot }}</p>
-            </div>
-          <center><b><div class="card-footer text-muted">{{ mot.Fonction }}</div></center></b>
-          </div>
         </div>
-        {% endfor %}
+
+    </section><!-- /Testimonials Section -->
+
+  </main>
+
+ <!-- Inclure le pied de page -->
+  {% include 'footer.html' %}
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
 
 
 
-        {% for mot in liste_mot %}
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
-          <div class="text-center">
-            <img src="{{ mot.Photo.url }}" class="rounded-circle img-fluid" alt="{{ mot.Nom }}" style="width: 120px; height: 120px;">
-          </div>
-          <div class="card mt-3 mx-auto" style="max-width: 20rem;">
-            <div class="card-header bg-primary text-white">
-              <center><h5 class="card-title mb-0">{{ mot.Nom }} {{ mot.Prénom }}</h5></center>
-            </div>
-            <div class="card-body">
-              <p style="text-align: justify;">{{ mot.Mot }}</p>
-            </div>
-          <center><b><div class="card-footer text-muted">{{ mot.Fonction }}</div></center></b>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
 
-    <footer class="pt-4 text-white" style="background-color: rgb(28, 39, 35);">
-      <div class="container mb-3">
-        <div class="row">
-          <div class="col-12 col-md-4 mb-3">
-            <h5>ISSP</h5>
-            <ul class="list-unstyled footer-links">
-              <li><a href="{% url 'index_information_fil' %}">Tout savoir sur l'ISSP</a></li>
-                      <li><a href="#">Contacter l'ISSP</a></li>
-                      <li><a href="#">Suivre l'ISSP</a></li>
-                      <div class="d-flex mt-2">
-                          <a href="https://www.facebook.com/issp.bf/" target="_blank" class="mr-3">
-                              <i class="fab fa-facebook-f"></i> Facebook
-                          </a>
-                          <a href="http://www.issp.bf/index.php/fr/" target="_blank" >
-                              <i class="fab fa-google-plus-g"></i> Google
-                          </a>
-                      </div>
-            </ul>
-          </div>
-          <div class="col-12 col-md-4 mb-3">
-            <h5>Liens utiles</h5>
-            <ul class="list-unstyled footer-links">
-              <li><a href="https://www.ciospb.gov.bf/">CIOSPB</a></li>
-              <li><a   href="https://www.ujkz.bf/">UJKZ</a></li>
-              <li><a   href="https://www.oreilleducampus.org/">Oreille du campus</a></li>
-              <li><a   href="https://www.insd.bf/">INSD</a></li>
-            </ul>
-          </div>
-          <div class="col-12 col-md-4 mb-3">
-            <h5>A propos du site</h5>
-            <ul class="list-unstyled footer-links">
-              <li><a   href="{% url 'ajout' %}">Publier</a></li>
-              <li><a   href="{% url 'admin:index' %}">Administrateur</a></li>
-              <li><a   href="{% url 'formulaire_message' %}">Nous contacter</a></li>
-            </ul>
-          </div>
-          <div class="col-12 col-md-4 mb-3">
-            <h5>Requêtes</h5>
-            <ul class="list-unstyled footer-links">
-              <li><a   href="{% url 'Membre_publicateur' %}">Devenir publicateur</a></li>
-              <li><a   href="{% url 'manage_requests' %}">Demandes</a></li>
-              <li><a   href="{% url 'register' %}">register</a></li>
-              <li><a   href="{% url 'connexion' %}">login</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+</body>
 
-      <p class="mb-0">
-        <center>&copy; <span id="year"></span> Première promotion LPAS. Tous droits réservés.</center>
-      </p>
-    </footer>
-
-
-
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script>
-      var typed = new Typed('.auto-typing' , {
-        strings: ['Bienvenue dans notre site de cours en ligne', 'Bienvenue dans notre site de cours en ligne', 'Bienvenue dans notre site de cours en ligne'],
-        typeSpeed: 100,
-        backSpeed: 100,
-        loop: true,
-        fadeOut:true,
-        fadeOutClass:'typed-fade-out',
-        fadeOutDelay: 500
-      })
-    </script>
-
-    <script>
-    var typed = new Typed('.auto-typing2' , {
-    strings: ["un centre d'excelence", "c'est plus qu'une école , un esprit", 'la référence en matière de statistique'],
-    typeSpeed: 100,
-    backSpeed: 100,
-    loop: true,
-    fadeOut:true,
-    fadeOutClass:'typed-fade-out',
-    fadeOutDelay: 500
-    })
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
 </html>

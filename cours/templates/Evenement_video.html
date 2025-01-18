@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">é
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Temps forts des évènements</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+
+
+
+
+</head>
+
+<body class="events-page">
+
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">{{ user.username }}</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'index' %}">Accueil</a></li>
+
+          <li class="dropdown"><a href="{% url 'index_cours' page_name='Acceuil2' %}"><span>Cours</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Licence</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="{% url 'index_cours' page_name='Licence1' %}">Licence 1</a></li>
+                  <li><a href="{% url 'index_cours' page_name='Licence2' %}">Licence 2</a></li>
+                  <li><a href="{% url 'index_cours' page_name='Licence3' %}">Licence 3</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown"><a href="#"><span>Master</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                   <li><a href="{% url 'index_cours' page_name='Master1' %}">Master 1</a></li>
+                   <li><a href="{% url 'index_cours' page_name='Master2' %}">Master 2</a></li>
+                   <li><a href="{% url 'index_cours' page_name='Master3' %}">Master 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="{% url 'index_sujet' page_name='Sujet' %}"><span>Tests d'entrée</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Présélections</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="{% url 'index_sujet' page_name='Preselect_sujet' %}">Sujets</a></li>
+                  <li><a href="{% url 'index_sujet' page_name='Preselect_corrige' %}">Propositions de corrigés</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Sélections</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                   <li><a href="{% url 'index_sujet' page_name='Select_sujet' %}">Sujets</a></li>
+                   <li><a href="{% url 'index_sujet' page_name='Select_corrige' %}">Propositions de corrigés</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="{% url 'index_sujet' page_name='Resultats' %}"><span>Résultats des tests</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a></li>
+            </ul>
+          </li>
+
+
+
+
+          <li class="dropdown"><a href="#" class="active"><span>Evènements</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                <li><a href="{% url 'index_evenement' page_name='Evenement_photo' %}"> Photos</a></li>
+                <li><a href="{% url 'index_evenement' page_name='Evenement_video' %}" class="active">Vidéos</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Informations</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                <li><a href="{% url 'index_information_site' %}">Informations sur le Site</a></li>
+                <li><a href="{% url 'index_information' %}">Informations sur l'ISSP</a></li>
+            </ul>
+          </li>
+
+
+
+
+          <li><a href="{% url 'formulaire_message' %}">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="{% url 'home' %}">Déconnexion</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Evènements</h1>
+              <p class="mb-0">Plongez au cœur de l'action avec nos vidéos. Des instants inoubliables capturés en mouvement, pour revivre l'énergie et l'émotion de nos événements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- End Page Title -->
+
+    <!-- Events Section -->
+    <section id="events" class="events section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          {% for Evenement in liste_videos %}
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-img">
+                <a href="{{Evenement.Support.url}}" class="glightbox" data-gallery="events-gallery">
+                <video src="{{Evenement.Support.url}}" controls preload="metadata" style="width: 400px; height: 400px;"></video>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><a href="">{{Evenement.Titre}}</a></h5>
+                <p class="fst-italic text-center">{{Evenement.Date_creation}}</p>
+                <p class="card-text">{{Evenement.Description}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </section><!-- /Events Section -->
+
+  </main>
+
+ <!-- Inclure le pied de page -->
+  {% include 'footer.html' %}
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!-- Gestion de la video -->
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('video');
+
+    videos.forEach(video => {
+      video.addEventListener('click', () => {
+        if (!video.classList.contains('fullscreen-video')) {
+          video.classList.add('fullscreen-video');
+          video.controls = true;  // Assurez-vous que les contrôles sont visibles
+        } else {
+          video.classList.remove('fullscreen-video');
+        }
+      });
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+
+</html>

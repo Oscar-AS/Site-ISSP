@@ -1,172 +1,172 @@
 <!DOCTYPE html>
+<html lang="en">
 {% load static %}
-  <head>
-    
-    <style>
-        .tab-pane {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-    </style>
-    <!-- Appel du fichier css-->
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" >
 
-   
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Informations</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+
 </head>
+<body class="courses-page">
 
-<body>
 
-  <header>
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-dark">
-      <div class="dropdown">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            MENU
-          </a>
-        
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="{% url 'index_cours' %}">Cours</a>
-            <a class="dropdown-item" href="{% url 'index_evenement' %}">Evenements</a>
-            <a class="dropdown-item" href="{% url 'index_sujet' %}">Sujet des test </a>
-            <a class="dropdown-item" href="{% url 'index_information' %}">Informations</a>
-            <a class="dropdown-item" href="{% url 'home' %}">home</a>
+      <a href="" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">{{ user.username }}</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'index' %}">Accueil</a></li>
+
+          <li class="dropdown"><a href="{% url 'index_cours' page_name='Acceuil2' %}"><span>Cours</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Licence</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="{% url 'index_cours' page_name='Licence1' %}">Licence 1</a></li>
+                  <li><a href="{% url 'index_cours' page_name='Licence2' %}">Licence 2</a></li>
+                  <li><a href="{% url 'index_cours' page_name='Licence3' %}">Licence 3</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown"><a href="#"><span>Master</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                   <li><a href="{% url 'index_cours' page_name='Master1' %}">Master 1</a></li>
+                   <li><a href="{% url 'index_cours' page_name='Master2' %}">Master 2</a></li>
+                   <li><a href="{% url 'index_cours' page_name='Master3' %}">Master 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="{% url 'index_sujet' page_name='Sujet' %}"><span>Tests d'entrée</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Présélections</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="{% url 'index_sujet' page_name='Preselect_sujet' %}">Sujets</a></li>
+                  <li><a href="{% url 'index_sujet' page_name='Preselect_corrige' %}">Propositions de corrigés</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Sélections</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                   <li><a href="{% url 'index_sujet' page_name='Select_sujet' %}">Sujets</a></li>
+                   <li><a href="{% url 'index_sujet' page_name='Select_corrige' %}">Propositions de corrigés</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="{% url 'index_sujet' page_name='Resultats' %}"><span>Résultats des tests</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a></li>
+            </ul>
+          </li>
+
+
+
+
+          <li class="dropdown"><a href="#"><span>Evènements</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                <li><a href="{% url 'index_evenement' page_name='Evenement_photo' %}"> Photos</a></li>
+                <li><a href="{% url 'index_evenement' page_name='Evenement_video' %}">Vidéos</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="active"><span>Informations</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                <li><a href="{% url 'index_information_site' %}">Informations sur le Site</a></li>
+                <li><a href="{% url 'index_information' %}" class="active">Informations sur l'ISSP</a></li>
+            </ul>
+          </li>
+
+
+
+
+          <li><a href="{% url 'formulaire_message' %}">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="{% url 'home' %}">Déconnexion</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Informations sur l'ISSP et la filière</h1>
+              <p class="mb-0">Cette section </p>
+            </div>
           </div>
         </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link text-white" href="{% url 'index' %}">Acceuil <span class="sr-only">(current)</span></a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link text-white " href="{% url 'formulaire_message' %}" >Contactez-nous</a>
-          </li>
-        </ul>
-      </div>  
-
-  </nav>
-</header>
-
-<body>
-    <div class="container">
-        <ul  class="nav nav-tabs mt-3">
-            <li class="nav-item">
-                <a class="nav-link active" href="#ISSP" onclick="openTab(event, 'ISSP')">Tout savoir sur l'ISSP</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#FIL" onclick="openTab(event, 'FIL')">Tout savoir sur les filieres</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#SITE" onclick="openTab(event, 'SITE')">Tout savoir sur le site</a>
-            </li>
-        </ul>
-
-        <div id="ISSP" class="tab-pane active" >
-            
-               Info sur l'issp 
-               
-        </div>
-
-        <div id="FIL" class="tab-pane">
-          
-              Info sur les filieres
-            
-        </div>
-
-        <div id="SITE" class="tab-pane" >
-           
-            Info sur le site
-       
-    </div>
-  </div>
-
-   
-
-    {% block content %}
-
-    <div style="height: 100px; width: 100%;">
-      
-    </div>
-
-    {% endblock %}
-
-<footer class="pt-4 my-md-1 pt-md-1 border-top" style="width: 100%; background-color: rgb(28, 39, 35);" >
-  <div class="row">
-    <div class="col-12 col-md"><div id="rdtheme_about-2" class="widget widget_rdtheme_about">
-      <a style="color: blanchedalmond;"><h5>ISSP</h5></a>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href=" {% url 'index_information_fil' %} ">Tout savoir sur l'ISSP</a></li>
-        <li><a class="text-muted" href="#">Contacter l'ISSP</a></li>
-        <li><a class="text-muted md-3 mr-3" href="#">Suivre l'ISSP</a></li>
-        
-        <div class="row">   <a href="https://www.facebook.com/issp.bf/" target="_blank"><i class="fab fa-facebook-f mx-3 border border-dark" > Facebook</i></a>                                       
-           <a href="http://www.issp.bf/index.php/fr/" target="_blank"><i class="fab fa-google-plus-g mx-2 border border-dark">Google</i> </a>                   
-        </div> 
-
-      </ul>
-  
-        
-        </div>
-    </div>
-    <div class="col-6 col-md">
-      <a style="color: blanchedalmond;"><h5>Liens utiles</h5></a>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="https://www.ciospb.gov.bf/">CIOSPB</a></li>
-        <li><a class="text-muted" href="https://www.ujkz.bf/">UJKZ</a></li>
-        <li><a class="text-muted" href="https://www.oreilleducampus.org/">Oreille du campus</a></li>
-        <li><a class="text-muted" href="https://www.insd.bf/">INSD</a></li>
-        
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <a style="color: blanchedalmond;"><h5>A propos du site</h5></a>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href=" http://127.0.0.1:8000/admin/">Publier</a></li>
-        <li><a class="text-muted" href=" http://127.0.0.1:8000/admin/">Administrateur</a></li>
-        <li><a class="text-muted" href="#">Nous contacter</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <a style="color: blanchedalmond;"><h5>............</h5></a>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="{%  url 'formulaire_message' %}">Nous contacter</a></li>
-        <li><a class="text-muted" href="{% url 'register' %}">register</a></li>
-        <li><a class="text-muted" href="{% url 'connexion' %}">login</a></li>
-        <li><a class="text-muted" href="#"></a>..........</li>
-      </ul>
-    </div>
-  </div>
-</footer>
+      </div>
+    </div><!-- End Page Title -->
 
 
+    <!-- Courses Section -->
+    <section id="courses" class="courses section">
+
+      <div class="container">
+
+        <div class="row">
+
+            Information ......................................
+
+         </div>
+
+      </div>
+
+    </section><!-- /Courses Section -->
+
+  </main>
 
 
+ <!-- Inclure le pied de page -->
+  {% include 'footer.html' %}
 
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<!-- Optional JavaScript -->
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
- <!-- Appel du fichier javas script--> 
- <script src="{% static 'js/info.js' %}"></script>
-  
-   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
 
 
 
 </body>
 
 </html>
-
- 
